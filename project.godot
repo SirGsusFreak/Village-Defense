@@ -14,3 +14,7 @@ config/name="Village Defense"
 run/main_scene="res://Basic_Guide.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/multimesh_scatter/plugin.cfg", "res://addons/scene_tools/plugin.cfg")

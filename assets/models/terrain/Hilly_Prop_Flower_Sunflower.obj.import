@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8fcd41587dvv"
+path="res://.godot/imported/Hilly_Prop_Flower_Sunflower.obj-f81963db7027b78df76fd3b04ca98e7e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Hilly_Prop_Flower_Sunflower.obj-f81963db7027b78df76fd3b04ca98e7e.mesh"]
+
+source_file="res://assets/models/terrain/Hilly_Prop_Flower_Sunflower.obj"
+dest_files=["res://.godot/imported/Hilly_Prop_Flower_Sunflower.obj-f81963db7027b78df76fd3b04ca98e7e.mesh", "res://.godot/imported/Hilly_Prop_Flower_Sunflower.obj-f81963db7027b78df76fd3b04ca98e7e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

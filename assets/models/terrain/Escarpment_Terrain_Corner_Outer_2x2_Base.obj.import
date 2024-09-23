@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://w28t7fa7wi5n"
+path="res://.godot/imported/Escarpment_Terrain_Corner_Outer_2x2_Base.obj-df12e2ba2763f3584373ff666118c742.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Escarpment_Terrain_Corner_Outer_2x2_Base.obj-df12e2ba2763f3584373ff666118c742.mesh"]
+
+source_file="res://assets/models/terrain/Escarpment_Terrain_Corner_Outer_2x2_Base.obj"
+dest_files=["res://.godot/imported/Escarpment_Terrain_Corner_Outer_2x2_Base.obj-df12e2ba2763f3584373ff666118c742.mesh", "res://.godot/imported/Escarpment_Terrain_Corner_Outer_2x2_Base.obj-df12e2ba2763f3584373ff666118c742.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cywasypf67uh6"
+path="res://.godot/imported/Cave_Prop_Hanging_Cables_3.obj-1f8a345c35435b03cdd1ae35dd3d7eae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cave_Prop_Hanging_Cables_3.obj-1f8a345c35435b03cdd1ae35dd3d7eae.mesh"]
+
+source_file="res://assets/models/terrain/Cave_Prop_Hanging_Cables_3.obj"
+dest_files=["res://.godot/imported/Cave_Prop_Hanging_Cables_3.obj-1f8a345c35435b03cdd1ae35dd3d7eae.mesh", "res://.godot/imported/Cave_Prop_Hanging_Cables_3.obj-1f8a345c35435b03cdd1ae35dd3d7eae.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

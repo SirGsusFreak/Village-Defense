@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnfm0d66tamvp"]
+
+[ext_resource type="MeshLibrary" uid="uid://cqsbxcjyaj8d4" path="res://assets/terrain/terrain_mesh_library.tres" id="1_ffjb8"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_ffjb8")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+metadata/_editor_floor_ = Vector3(0, 0, 0)

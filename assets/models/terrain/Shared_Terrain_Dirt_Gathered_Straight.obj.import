@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://q8dnsrnxf1pp"
+path="res://.godot/imported/Shared_Terrain_Dirt_Gathered_Straight.obj-f9ce6b8de8c52eb30aa86c937bc3f5fb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Shared_Terrain_Dirt_Gathered_Straight.obj-f9ce6b8de8c52eb30aa86c937bc3f5fb.mesh"]
+
+source_file="res://assets/models/terrain/Shared_Terrain_Dirt_Gathered_Straight.obj"
+dest_files=["res://.godot/imported/Shared_Terrain_Dirt_Gathered_Straight.obj-f9ce6b8de8c52eb30aa86c937bc3f5fb.mesh", "res://.godot/imported/Shared_Terrain_Dirt_Gathered_Straight.obj-f9ce6b8de8c52eb30aa86c937bc3f5fb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

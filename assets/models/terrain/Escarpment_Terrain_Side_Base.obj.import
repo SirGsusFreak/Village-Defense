@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cs0p3fk608pya"
+path="res://.godot/imported/Escarpment_Terrain_Side_Base.obj-408e67565c3787eef590ae2bd48a7183.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Escarpment_Terrain_Side_Base.obj-408e67565c3787eef590ae2bd48a7183.mesh"]
+
+source_file="res://assets/models/terrain/Escarpment_Terrain_Side_Base.obj"
+dest_files=["res://.godot/imported/Escarpment_Terrain_Side_Base.obj-408e67565c3787eef590ae2bd48a7183.mesh", "res://.godot/imported/Escarpment_Terrain_Side_Base.obj-408e67565c3787eef590ae2bd48a7183.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

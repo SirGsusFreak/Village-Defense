@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgq2d6j31w557"
+path="res://.godot/imported/Cave_Terrain_Flat_Round_Inner.obj-069113e5ec67d952a2e7b4b89d361559.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cave_Terrain_Flat_Round_Inner.obj-069113e5ec67d952a2e7b4b89d361559.mesh"]
+
+source_file="res://assets/models/terrain/Cave_Terrain_Flat_Round_Inner.obj"
+dest_files=["res://.godot/imported/Cave_Terrain_Flat_Round_Inner.obj-069113e5ec67d952a2e7b4b89d361559.mesh", "res://.godot/imported/Cave_Terrain_Flat_Round_Inner.obj-069113e5ec67d952a2e7b4b89d361559.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

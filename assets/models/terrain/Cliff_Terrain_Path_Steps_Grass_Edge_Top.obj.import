@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b65ertrr0g3xq"
+path="res://.godot/imported/Cliff_Terrain_Path_Steps_Grass_Edge_Top.obj-1d7bf8e876d9206979130d90d1fae64c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cliff_Terrain_Path_Steps_Grass_Edge_Top.obj-1d7bf8e876d9206979130d90d1fae64c.mesh"]
+
+source_file="res://assets/models/terrain/Cliff_Terrain_Path_Steps_Grass_Edge_Top.obj"
+dest_files=["res://.godot/imported/Cliff_Terrain_Path_Steps_Grass_Edge_Top.obj-1d7bf8e876d9206979130d90d1fae64c.mesh", "res://.godot/imported/Cliff_Terrain_Path_Steps_Grass_Edge_Top.obj-1d7bf8e876d9206979130d90d1fae64c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

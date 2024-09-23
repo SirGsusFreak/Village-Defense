@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctwxmjolerid0"
+path="res://.godot/imported/Beach_Terrain_Sand_Transition_Gentle_Sharp_Flush_Base.obj-c2e9c47d66d7cc563463884c4216726f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Beach_Terrain_Sand_Transition_Gentle_Sharp_Flush_Base.obj-c2e9c47d66d7cc563463884c4216726f.mesh"]
+
+source_file="res://assets/models/terrain/Beach_Terrain_Sand_Transition_Gentle_Sharp_Flush_Base.obj"
+dest_files=["res://.godot/imported/Beach_Terrain_Sand_Transition_Gentle_Sharp_Flush_Base.obj-c2e9c47d66d7cc563463884c4216726f.mesh", "res://.godot/imported/Beach_Terrain_Sand_Transition_Gentle_Sharp_Flush_Base.obj-c2e9c47d66d7cc563463884c4216726f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

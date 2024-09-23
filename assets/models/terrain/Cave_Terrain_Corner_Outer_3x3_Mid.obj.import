@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pv0mqq6moisg"
+path="res://.godot/imported/Cave_Terrain_Corner_Outer_3x3_Mid.obj-56dcb1532070417188e4339c8307de2f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cave_Terrain_Corner_Outer_3x3_Mid.obj-56dcb1532070417188e4339c8307de2f.mesh"]
+
+source_file="res://assets/models/terrain/Cave_Terrain_Corner_Outer_3x3_Mid.obj"
+dest_files=["res://.godot/imported/Cave_Terrain_Corner_Outer_3x3_Mid.obj-56dcb1532070417188e4339c8307de2f.mesh", "res://.godot/imported/Cave_Terrain_Corner_Outer_3x3_Mid.obj-56dcb1532070417188e4339c8307de2f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

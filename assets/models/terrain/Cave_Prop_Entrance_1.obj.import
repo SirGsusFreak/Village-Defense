@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6mwnbal1yr0r"
+path="res://.godot/imported/Cave_Prop_Entrance_1.obj-7f5256d2e8a3c9be602655dc8cf04abe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cave_Prop_Entrance_1.obj-7f5256d2e8a3c9be602655dc8cf04abe.mesh"]
+
+source_file="res://assets/models/terrain/Cave_Prop_Entrance_1.obj"
+dest_files=["res://.godot/imported/Cave_Prop_Entrance_1.obj-7f5256d2e8a3c9be602655dc8cf04abe.mesh", "res://.godot/imported/Cave_Prop_Entrance_1.obj-7f5256d2e8a3c9be602655dc8cf04abe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

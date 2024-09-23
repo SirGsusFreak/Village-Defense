@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d22naik1egjf4"
+path="res://.godot/imported/Beach_Prop_Coconut_1.obj-2c17abb10ab6b5e0c7e3cec63a5853bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Beach_Prop_Coconut_1.obj-2c17abb10ab6b5e0c7e3cec63a5853bf.mesh"]
+
+source_file="res://assets/models/terrain/Beach_Prop_Coconut_1.obj"
+dest_files=["res://.godot/imported/Beach_Prop_Coconut_1.obj-2c17abb10ab6b5e0c7e3cec63a5853bf.mesh", "res://.godot/imported/Beach_Prop_Coconut_1.obj-2c17abb10ab6b5e0c7e3cec63a5853bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
