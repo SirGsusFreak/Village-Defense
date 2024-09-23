@@ -2,6 +2,25 @@
 .import/
 export.cfg
 export_presets.cfg
+.godot/
+
+# Blender specific ignores
+*.blend1
+
+# Any Test World
+*TestWorld.tscn
+
+# Various IDEs
+.vs/*
+.vscode/
+*.sln
+.idea/*
+
+# Reference Images
+Models/Reference Images/*
+
+# Saves
+settings.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
