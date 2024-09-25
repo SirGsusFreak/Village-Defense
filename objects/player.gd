@@ -4,38 +4,24 @@ extends CharacterBody3D
 @export var acceleration: float = 5.0
 @export var deacceleration: float = 8.0
 @export var gravity: float = -9.8
-@export var jump_velocity: float = 6.0
-@onready var skin := $Skin
+@export var jump_velocity: float = 4.0
 
-# @export_category("Animation")
-# @onready var animPlayer := $Body/AnimationPlayer
-# @onready var animTree := $Body/AnimationTree
-# @export var animStateMachine: AnimationNodeStateMachine
+# Reference to the mannequin node (which has the mannequin.gd script attached)
+@onready var skin := $Skin
+@onready var mannequin := skin
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
 @onready var sword_animation = $Sword/AnimationPlayer
 
-# Track current animation state
-enum AnimationState {
-	IDLE,
-	RUN,
-	AIR_JUMP_ANTICIPATION,
-	AIR_JUMP,
-	AIR_LAND
-}
-
-# var current_animation: AnimationState = AnimationState.IDLE
-# var is_jumping: bool = false
-
-# func _ready() -> void:
-# 	var animStateMachine := animTree.get()
+var is_jumping: bool = false
 
 # Called every physics frame
 func _physics_process(delta: float) -> void:
 	var direction = get_input_direction()
 	direction = direction.normalized()
 	
+	# Update velocity and gravity
 	update_velocity(direction, delta)
 	apply_gravity(delta)
 	handle_jumping()
@@ -45,9 +31,10 @@ func _physics_process(delta: float) -> void:
 
 	# Rotate the player to face the cursor
 	rotate_body_towards_cursor()
-
-	# Update animations based on movement and state
-	# update_animation_state(direction)
+	
+	# Update the mannequin's animation based on the player's movement
+	update_mannequin_state(direction)
+  
 	# animation for weapons
 	if Input.is_action_just_pressed("atack"):
 		if !sword_animation.is_playing():
@@ -88,9 +75,8 @@ func apply_gravity(delta: float) -> void:
 func handle_jumping() -> void:
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
-		# is_jumping = true
-		# Set the jump anticipation animation when jump is initiated
-		# play_animation(AnimationState.AIR_JUMP_ANTICIPATION)
+		is_jumping = true
+		mannequin.transition_to(mannequin.AnimationState.AIR)  # Call on mannequin instance
 
 # Rotate the body to face the direction of the cursor
 func rotate_body_towards_cursor() -> void:
@@ -110,41 +96,23 @@ func rotate_body_towards_cursor() -> void:
 		# Rotate only the body, not the entire player
 		skin.rotation_degrees.y = target_rotation_y
 
-# Update the animation based on movement and state
-# func update_animation_state(direction: Vector3) -> void:
-# 	if not is_on_floor():
-# 		# Player is in the air
-# 		if is_jumping and velocity.y < 0:
-# 			# Player has jumped and is ascending
-# 			set_animation_state(AnimationState.AIR_JUMP)
-# 		elif velocity.y > 0:
-# 			# Player is landing
-# 			set_animation_state(AnimationState.AIR_LAND)
-# 		is_jumping = false
-# 	else:
-# 		# Player is on the ground
-# 		if direction == Vector3.ZERO:
-# 			# No movement - idle
-# 			set_animation_state(AnimationState.IDLE)
-# 		else:
-# 			# Player is moving - running
-# 			set_animation_state(AnimationState.RUN)
-
-# # Set the animation state in the AnimationTree
-# func set_animation_state(animation: AnimationState) -> void:
-# 	if animation == current_animation:
-# 		return
-
-# 	match animation:
-# 		AnimationState.IDLE:
-# 			animStateMachine.travel("Idle")
-# 		AnimationState.RUN:
-# 			animStateMachine.travel("Run")
-# 		AnimationState.AIR_JUMP_ANTICIPATION:
-# 			animStateMachine.travel("AirJumpAnticipation")
-# 		AnimationState.AIR_JUMP:
-# 			animStateMachine.travel("AirJump")
-# 		AnimationState.AIR_LAND:
-# 			animStateMachine.travel("AirLand")
-
-# 	current_animation = animation
+# Update the mannequin's animation state based on player movement
+func update_mannequin_state(direction: Vector3) -> void:
+	if not is_on_floor():
+		if is_jumping and velocity.y < 0:
+			# Player is jumping
+			mannequin.transition_to(mannequin.AnimationState.AIR)  # Call on mannequin instance
+		elif velocity.y > 0:
+			# Player is landing
+			mannequin.transition_to(mannequin.AnimationState.LAND)  # Call on mannequin instance
+		is_jumping = false
+	else:
+		if direction == Vector3.ZERO:
+			# No movement - idle
+			mannequin.transition_to(mannequin.AnimationState.IDLE)  # Call on mannequin instance
+			mannequin.set_is_moving(false)  # Call on mannequin instance
+		elif not is_jumping:
+			# Player is moving - running
+			mannequin.transition_to(mannequin.AnimationState.RUN)  # Call on mannequin instance
+			mannequin.set_is_moving(true)  # Call on mannequin instance
+	#mannequin.set_move_direction(direction)  # Call on mannequin instance
