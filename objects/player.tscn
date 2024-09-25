@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://daq1fvbwtx1x7"]
+
+[ext_resource type="Script" path="res://objects/player.gd" id="1_5ip37"]
+[ext_resource type="PackedScene" uid="uid://by5oxb2qc7pf" path="res://assets/models/player/mannequiny.tscn" id="2_2t5db"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkaj"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_5ip37")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8nkaj")
+
+[node name="Skin" parent="." instance=ExtResource("2_2t5db")]
+
+[node name="FocusPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="FocusPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+fov = 85.0
