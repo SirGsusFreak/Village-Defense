@@ -13,7 +13,10 @@ script = ExtResource("1_5ip37")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8nkaj")
 
-[node name="Skin" parent="." instance=ExtResource("2_2t5db")]
+[node name="Character" parent="." instance=ExtResource("2_2t5db")]
+
+[node name="Sword" parent="Character" instance=ExtResource("3_goh52")]
+transform = Transform3D(0.731103, 0.615346, -0.294681, 0.57701, -0.788143, -0.214221, -0.364071, -0.0134159, -0.931275, -0.663309, 1.26155, 0.230044)
 
 [node name="FocusPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
@@ -21,6 +24,3 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 [node name="Camera3D" type="Camera3D" parent="FocusPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 fov = 85.0
-
-[node name="Sword" parent="." instance=ExtResource("3_goh52")]
-transform = Transform3D(0.731103, 0.615346, -0.294681, 0.57701, -0.788143, -0.214221, -0.364071, -0.0134159, -0.931275, -0.663309, 1.26155, 0.230044)
