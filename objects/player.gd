@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
+@onready var sword_animation = $Sword/AnimationPlayer
 
 var is_jumping: bool = false
 
@@ -33,6 +34,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Update the mannequin's animation based on the player's movement
 	update_mannequin_state(direction)
+  
+	# animation for weapons
+	if Input.is_action_just_pressed("atack"):
+		if !sword_animation.is_playing():
+			sword_animation.play("swing")
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
