@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://c61urukwnhls3"]
+
+[ext_resource type="PackedScene" uid="uid://ckm7vtq3v0kfq" path="res://objects/weapons/Katana.glb" id="1_rwkcm"]
+
+[sub_resource type="Animation" id="Animation_8mexw"]
+resource_name = "swing"
+length = 0.300001
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Katana:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.2, 0.1), Vector3(0.5, -0.1, 0.1), Vector3(0.5, -0.1, 0.1), Vector3(0.6, -0.2, 0), Vector3(0.6, -0.2, 0), Vector3(0.1, 0.2, 0.1), Vector3(0.1, 0.2, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_bxno1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Katana:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bha6p"]
+_data = {
+"RESET": SubResource("Animation_bxno1"),
+"swing": SubResource("Animation_8mexw")
+}
+
+[node name="Sword" instance=ExtResource("1_rwkcm")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_bha6p")
+}
