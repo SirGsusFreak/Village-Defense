@@ -6,7 +6,7 @@ var speed = 5.0
 
 func _ready():
 	# Get the player node
-	player = get_node("/root/Game/Level/Level")
+	player = get_node("/root/Game/Level/Level/Player")
 
 func _physics_process(delta):
 	if player:
