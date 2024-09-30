@@ -89,7 +89,7 @@ shape = SubResource("CapsuleShape3D_8nkaj")
 
 [node name="Sword" parent="Character/Weapons" instance=ExtResource("3_goh52")]
 transform = Transform3D(0.731103, 0.615346, -0.294681, 0.57701, -0.788143, -0.214221, -0.364071, -0.0134159, -0.931275, -0.663309, 1.26155, 0.230044)
-=======
+
 [node name="Weapon" type="Node3D" parent="Model"]
 
 [node name="Sword" parent="Model/Weapon" instance=ExtResource("3_goh52")]
