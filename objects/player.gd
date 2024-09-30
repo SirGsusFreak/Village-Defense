@@ -23,7 +23,6 @@ enum weapons {
 var weapon = weapons.Sword
 @onready var weapon_switch =  $FocusPoint/Camera3D/WeaponSwitch
 
-=======
 @onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
 @onready var model := $Model
 @onready var mannequin := model
