@@ -1,51 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://daq1fvbwtx1x7"]
 
-[ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://src/Player/Mannequiny.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Main/StateMachine/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://src/Player/States/Move.gd" type="Script" id=4]
-[ext_resource path="res://src/Player/States/Idle.gd" type="Script" id=5]
-[ext_resource path="res://src/Player/States/Air.gd" type="Script" id=6]
-[ext_resource path="res://src/Player/States/Run.gd" type="Script" id=7]
-[ext_resource path="res://src/Player/Camera/CameraRig.tscn" type="PackedScene" id=8]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_5ip37"]
+[ext_resource type="PackedScene" uid="uid://by5oxb2qc7pf" path="res://assets/models/player/mannequiny.tscn" id="2_2t5db"]
+[ext_resource type="PackedScene" uid="uid://c61urukwnhls3" path="res://scenes/sword.tscn" id="3_goh52"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkaj"]
 
-[sub_resource type="CapsuleShape" id=2]
-radius = 0.25
-height = 1.25
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_5ip37")
 
-[node name="Player" type="KinematicBody"]
-script = ExtResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8nkaj")
 
-[node name="Mannequiny" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.222992 )
+[node name="Model" parent="." instance=ExtResource("2_2t5db")]
 
-[node name="AnimationTree" parent="Mannequiny" index="2"]
-parameters/playback = SubResource( 1 )
+[node name="Weapon" type="Node3D" parent="Model"]
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.875, 0 )
-shape = SubResource( 2 )
+[node name="Sword" parent="Model/Weapon" instance=ExtResource("3_goh52")]
+transform = Transform3D(-1, -6.69697e-08, -5.61943e-08, 0, 0.642788, -0.766044, 8.74228e-08, -0.766044, -0.642788, 0, 0, 0)
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 3 )
-initial_state = NodePath("Move/Idle")
+[node name="FocusPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
 
-[node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource( 4 )
-gravity = -100.0
-
-[node name="Idle" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 5 )
-
-[node name="Air" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 6 )
-
-[node name="Run" type="Node" parent="StateMachine/Move"]
-script = ExtResource( 7 )
-
-[node name="CameraRig" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38644, 0 )
-
-[editable path="Mannequiny"]
+[node name="Camera3D" type="Camera3D" parent="FocusPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+fov = 85.0
