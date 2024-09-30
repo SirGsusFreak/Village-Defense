@@ -7,14 +7,20 @@ extends CharacterBody3D
 @export var jump_velocity: float = 4.0
 
 # Reference to the mannequin node (which has the mannequin.gd script attached)
-@onready var character := $Character
-@onready var mannequin := character
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
-@onready var sword_animation := $Character/Sword/AnimationPlayer
+@onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
+@onready var model := $Model
+@onready var mannequin := model
+@onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
+@onready var weapon := $Model/Weapon
+
 
 var is_jumping: bool = false
+
+func _ready() -> void:
+	weapon.reparent(hand_right, false)
 
 # Called every physics frame
 func _physics_process(delta: float) -> void:
@@ -30,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Rotate the player to face the cursor
-	rotate_body_towards_cursor()
+	handle_rotation(direction)
 	
 	# Update the mannequin's animation based on the player's movement
 	update_mannequin_state(direction)
@@ -77,6 +83,18 @@ func handle_jumping() -> void:
 		velocity.y = jump_velocity
 		is_jumping = true
 		mannequin.transition_to(mannequin.AnimationState.AIR)  # Call on mannequin instance
+		
+func handle_rotation(direction: Vector3) -> void:
+	if Input.is_action_pressed("aim"):
+		# If aiming, rotate to face the cursor
+		rotate_body_towards_cursor()
+		mannequin.transition_to(mannequin.AnimationState.AIMING)
+	else:
+		# If not aiming, rotate to face the direction of movement
+		if direction != Vector3.ZERO:
+			# Calculate the direction the player is moving in and face that direction
+			var target_rotation_y = rad_to_deg(atan2(direction.x, direction.z))
+			model.rotation_degrees.y = target_rotation_y
 
 # Rotate the body to face the direction of the cursor
 func rotate_body_towards_cursor() -> void:
@@ -94,7 +112,7 @@ func rotate_body_towards_cursor() -> void:
 		var direction_to_cursor = (intersection_point - global_transform.origin).normalized()
 		var target_rotation_y = rad_to_deg(atan2(direction_to_cursor.x, direction_to_cursor.z))
 		# Rotate only the body, not the entire player
-		character.rotation_degrees.y = target_rotation_y
+		model.rotation_degrees.y = target_rotation_y
 
 # Update the mannequin's animation state based on player movement
 func update_mannequin_state(direction: Vector3) -> void:
