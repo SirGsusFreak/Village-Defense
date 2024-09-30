@@ -84,7 +84,7 @@ shape = SubResource("CapsuleShape3D_8nkaj")
 
 [node name="Model" parent="." instance=ExtResource("2_2t5db")]
 
-<<<<<<< HEAD:objects/player.tscn
+
 [node name="Weapons" type="Node3D" parent="Character"]
 
 [node name="Sword" parent="Character/Weapons" instance=ExtResource("3_goh52")]
@@ -94,7 +94,7 @@ transform = Transform3D(0.731103, 0.615346, -0.294681, 0.57701, -0.788143, -0.21
 
 [node name="Sword" parent="Model/Weapon" instance=ExtResource("3_goh52")]
 transform = Transform3D(-1, -6.69697e-08, -5.61943e-08, 0, 0.642788, -0.766044, 8.74228e-08, -0.766044, -0.642788, 0, 0, 0)
->>>>>>> main:objects/player/Player.tscn
+
 
 [node name="pistol" parent="Character/Weapons" instance=ExtResource("3_as2su")]
 transform = Transform3D(0.12, -0.000289025, 0, 0.000289025, 0.12, 0, 0, 0, 0.12, -0.765307, 1.45154, -0.196876)
