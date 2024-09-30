@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvnmien46nih"
+uid="uid://jxyd0dmxew1d"
 path.s3tc="res://.godot/imported/Katana_Diffuse_palette_2.jpg-a36854b8222a3e1b2b5ca73df5f78af7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "4f5c1a764fc9801ab8cb5731c984d383"
 }
 
 [deps]

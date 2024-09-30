@@ -16,6 +16,7 @@ extends CharacterBody3D
 @onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
 @onready var weapon := $Model/Weapon
 
+
 var is_jumping: bool = false
 
 func _ready() -> void:
@@ -39,6 +40,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Update the mannequin's animation based on the player's movement
 	update_mannequin_state(direction)
+  
+	# animation for weapons
+	if Input.is_action_just_pressed("attack"):
+		if !sword_animation.is_playing():
+			sword_animation.play("swing")
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -106,9 +112,7 @@ func rotate_body_towards_cursor() -> void:
 		var direction_to_cursor = (intersection_point - global_transform.origin).normalized()
 		var target_rotation_y = rad_to_deg(atan2(direction_to_cursor.x, direction_to_cursor.z))
 		# Rotate only the body, not the entire player
-
 		model.rotation_degrees.y = target_rotation_y
-			
 
 # Update the mannequin's animation state based on player movement
 func update_mannequin_state(direction: Vector3) -> void:
