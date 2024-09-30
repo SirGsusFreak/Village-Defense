@@ -7,23 +7,14 @@ extends CharacterBody3D
 @export var jump_velocity: float = 4.0
 
 # Reference to the mannequin node (which has the mannequin.gd script attached)
-<<<<<<< Updated upstream
-@onready var skin := $Skin
-@onready var mannequin := skin
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
-@onready var sword_animation = $Sword/AnimationPlayer
-=======
+@onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
 @onready var model := $Model
 @onready var mannequin := model
 @onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
 @onready var weapon := $Model/Weapon
-
-# Camera node
-@onready var camera: Camera3D = $FocusPoint/Camera3D
-@onready var sword_animation := $Model/Weapon/Sword/AnimationPlayer
->>>>>>> Stashed changes
 
 var is_jumping: bool = false
 
@@ -48,11 +39,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Update the mannequin's animation based on the player's movement
 	update_mannequin_state(direction)
-  
-	# animation for weapons
-	if Input.is_action_just_pressed("atack"):
-		if !sword_animation.is_playing():
-			sword_animation.play("swing")
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -120,12 +106,9 @@ func rotate_body_towards_cursor() -> void:
 		var direction_to_cursor = (intersection_point - global_transform.origin).normalized()
 		var target_rotation_y = rad_to_deg(atan2(direction_to_cursor.x, direction_to_cursor.z))
 		# Rotate only the body, not the entire player
-<<<<<<< Updated upstream
-		skin.rotation_degrees.y = target_rotation_y
-=======
+
 		model.rotation_degrees.y = target_rotation_y
 			
->>>>>>> Stashed changes
 
 # Update the mannequin's animation state based on player movement
 func update_mannequin_state(direction: Vector3) -> void:
