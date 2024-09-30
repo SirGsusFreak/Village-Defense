@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbiggxu6b04j1"]
+
+[ext_resource type="PackedScene" uid="uid://cmp6t6volluf8" path="res://scenes/testing/player_test_level.tscn" id="1_phd1t"]
+[ext_resource type="PackedScene" uid="uid://cnswfhobjk8by" path="res://scenes/Enemy3D.tscn" id="2_387gf"]
+
+[node name="Game" type="Node"]
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Level" parent="Level" instance=ExtResource("1_phd1t")]
+
+[node name="CharacterBody3D" parent="Level" instance=ExtResource("2_387gf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.445, 1, 6.60285)
