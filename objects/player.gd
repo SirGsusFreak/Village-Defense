@@ -10,7 +10,7 @@ extends CharacterBody3D
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
-<<<<<<< HEAD
+
 @onready var sword_animation := $Character/Weapons/Sword/AnimationPlayer
 @onready var pistol_animation := $Character/Weapons/pistol/AnimationPlayer
 
@@ -29,7 +29,7 @@ var weapon = weapons.Sword
 @onready var mannequin := model
 @onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
 @onready var weapon := $Model/Weapon
->>>>>>> main
+
 
 
 var is_jumping: bool = false
