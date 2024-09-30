@@ -1,10 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://daq1fvbwtx1x7"]
+[gd_scene load_steps=10 format=3 uid="uid://daq1fvbwtx1x7"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5ip37"]
 [ext_resource type="PackedScene" uid="uid://by5oxb2qc7pf" path="res://assets/models/player/mannequiny.tscn" id="2_2t5db"]
+[ext_resource type="PackedScene" uid="uid://1i21msxxskt4" path="res://scenes/pistol_9_mm.tscn" id="3_as2su"]
 [ext_resource type="PackedScene" uid="uid://c61urukwnhls3" path="res://scenes/sword.tscn" id="3_goh52"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkaj"]
+
+[sub_resource type="Animation" id="Animation_40e5e"]
+resource_name = "lowerWeapon"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Character/Weapons/Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.663309, 1.26155, 0.230044), Vector3(-0.663, -1, 0.23)]
+}
+
+[sub_resource type="Animation" id="Animation_5sf1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Character/Weapons/Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.663309, 1.26155, 0.230044)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Character/Weapons/pistol:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.765307, 1.45154, -0.196876)]
+}
+
+[sub_resource type="Animation" id="Animation_rqkho"]
+resource_name = "lowerPistol"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Character/Weapons/pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.765307, 1.45154, -0.196876), Vector3(-0.765, -1, -0.197)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tj43j"]
+_data = {
+"RESET": SubResource("Animation_5sf1a"),
+"lowerPistol": SubResource("Animation_rqkho"),
+"lowerWeapon": SubResource("Animation_40e5e")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_5ip37")
@@ -15,12 +84,22 @@ shape = SubResource("CapsuleShape3D_8nkaj")
 
 [node name="Character" parent="." instance=ExtResource("2_2t5db")]
 
-[node name="Sword" parent="Character" instance=ExtResource("3_goh52")]
+[node name="Weapons" type="Node3D" parent="Character"]
+
+[node name="Sword" parent="Character/Weapons" instance=ExtResource("3_goh52")]
 transform = Transform3D(0.731103, 0.615346, -0.294681, 0.57701, -0.788143, -0.214221, -0.364071, -0.0134159, -0.931275, -0.663309, 1.26155, 0.230044)
+
+[node name="pistol" parent="Character/Weapons" instance=ExtResource("3_as2su")]
+transform = Transform3D(0.12, -0.000289025, 0, 0.000289025, 0.12, 0, 0, 0, 0.12, -0.765307, 1.45154, -0.196876)
 
 [node name="FocusPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="FocusPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0641198, -0.000622511, 10.036)
 fov = 85.0
+
+[node name="WeaponSwitch" type="AnimationPlayer" parent="FocusPoint/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_tj43j")
+}

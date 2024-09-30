@@ -12,7 +12,19 @@ extends CharacterBody3D
 
 # Camera node
 @onready var camera: Camera3D = $FocusPoint/Camera3D
-@onready var sword_animation := $Character/Sword/AnimationPlayer
+@onready var sword_animation := $Character/Weapons/Sword/AnimationPlayer
+@onready var pistol_animation := $Character/Weapons/pistol/AnimationPlayer
+
+# Weapon switching
+enum weapons {
+		Sword,
+		pistol
+		
+}
+var weapon = weapons.Sword
+@onready var weapon_switch =  $FocusPoint/Camera3D/WeaponSwitch
+
+
 
 var is_jumping: bool = false
 
@@ -37,8 +49,18 @@ func _physics_process(delta: float) -> void:
   
 	# animation for weapons
 	if Input.is_action_just_pressed("attack"):
-		if !sword_animation.is_playing():
-			sword_animation.play("swing")
+		match weapon:
+			weapons.Sword:
+				if !sword_animation.is_playing():
+					sword_animation.play("swing")
+			weapons.pistol:
+				if !pistol_animation.is_playing():
+					pistol_animation.play("shoot")
+	#Weapon Switching
+	if Input.is_action_just_pressed("weapon_one") and weapon != weapons.Sword:
+		switch_weapon(weapons.Sword)
+	if Input.is_action_just_pressed("weapon_two") and weapon != weapons.pistol:
+		switch_weapon(weapons.pistol)
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -116,3 +138,26 @@ func update_mannequin_state(direction: Vector3) -> void:
 			mannequin.transition_to(mannequin.AnimationState.RUN)  # Call on mannequin instance
 			mannequin.set_is_moving(true)  # Call on mannequin instance
 	#mannequin.set_move_direction(direction)  # Call on mannequin instance
+	
+func switch_weapon(new_weapon: int):
+	lower_weapon()
+	await  get_tree().create_timer(0.3).timeout
+	raise_weapon(new_weapon)
+
+
+func lower_weapon():
+	match weapon:
+		weapons.Sword:
+			weapon_switch.play("lowerWeapon")
+		weapons.pistol:
+			weapon_switch.play("lowerPistol")
+	
+func raise_weapon(new_weapon):
+	match new_weapon:
+		weapons.Sword:
+			weapon_switch.play_backwards("lowerWeapon")
+		weapons.pistol:
+			weapon_switch.play_backwards("lowerPistol")
+	weapon = new_weapon
+	
+	
