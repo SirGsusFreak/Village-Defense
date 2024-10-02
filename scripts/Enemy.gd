@@ -1,5 +1,5 @@
 # enemy.gd
-extends Node
+extends CharacterBody3D
 
 class_name Enemy
 
