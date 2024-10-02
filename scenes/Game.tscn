@@ -5,6 +5,8 @@
 
 [node name="Game" type="Node"]
 
+[node name="Menu" type="Node" parent="."]
+
 [node name="Level" type="Node" parent="."]
 
 [node name="Level" parent="Level" instance=ExtResource("1_phd1t")]
