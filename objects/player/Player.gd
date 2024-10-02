@@ -20,6 +20,18 @@ extends CharacterBody3D
 @onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
 @onready var weapon := $Model/Weapon
 @onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
+@onready var pistol_animation := $Model/Weapons/pistol/AnimationPlayer
+
+@onready var weapon_switch =  $FocusPoint/Camera3D/WeaponSwitch
+
+# Weapon switching
+enum Weapons {
+		Sword,
+		Pistol
+		
+}
+
+var current_weapon = Weapons.Sword
 
 var is_jumping: bool = false
 
@@ -47,6 +59,20 @@ func _physics_process(delta: float) -> void:
 	
 	# Update the mannequin's animation based on the player's movement
 	update_mannequin_state(direction)
+	
+	if Input.is_action_just_pressed("attack"):
+		match weapon:
+			Weapons.Sword:
+				if !sword_animation.is_playing():
+					sword_animation.play("swing")
+			Weapons.Pistol:
+				if !pistol_animation.is_playing():
+					pistol_animation.play("shoot")
+	#Weapon Switching
+	if Input.is_action_just_pressed("weapon_one") and current_weapon != Weapons.Sword:
+		switch_weapon(Weapons.Sword)
+	if Input.is_action_just_pressed("weapon_two") and current_weapon != Weapons.Pistol:
+		switch_weapon(Weapons.Pistol)
 
 
 # Get the movement input from the player
@@ -122,6 +148,28 @@ func rotate_body_towards_cursor() -> void:
 		# Rotate only the body, not the entire player
 
 		model.rotation_degrees.y = target_rotation_y
+		
+
+func switch_weapon(new_weapon: int):
+	lower_weapon()
+	await  get_tree().create_timer(0.3).timeout
+	raise_weapon(new_weapon)
+
+
+func lower_weapon():
+	match weapon:
+		Weapons.Sword:
+			weapon_switch.play("lowerWeapon")
+		Weapons.Pistol:
+			weapon_switch.play("lowerPistol")
+	
+func raise_weapon(new_weapon):
+	match new_weapon:
+		Weapons.Sword:
+			weapon_switch.play_backwards("lowerWeapon")
+		Weapons.Pistol:
+			weapon_switch.play_backwards("lowerPistol")
+	current_weapon = new_weapon
 
 
 # Update the mannequin's animation state based on player movement
