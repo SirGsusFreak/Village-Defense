@@ -1,15 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbiggxu6b04j1"]
 
-[ext_resource type="PackedScene" uid="uid://cmp6t6volluf8" path="res://scenes/testing/player_test_level.tscn" id="1_phd1t"]
-[ext_resource type="PackedScene" uid="uid://cnswfhobjk8by" path="res://scenes/Enemy3D.tscn" id="2_387gf"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_3r664"]
+[ext_resource type="PackedScene" uid="uid://gojxdxg7huag" path="res://scenes/ui/menus/main_menu.tscn" id="2_72mt2"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_3r664")
 
-[node name="Menu" type="Node" parent="."]
+[node name="UI" type="Node" parent="."]
+
+[node name="MainMenu" parent="UI" instance=ExtResource("2_72mt2")]
 
 [node name="Level" type="Node" parent="."]
 
-[node name="Level" parent="Level" instance=ExtResource("1_phd1t")]
+[node name="Entities" type="Node" parent="."]
 
-[node name="CharacterBody3D" parent="Level" instance=ExtResource("2_387gf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.445, 1, 6.60285)
+[node name="Player" type="Node" parent="Entities"]
+
+[node name="Enemies" type="Node" parent="Entities"]
+
+[node name="NPCs" type="Node" parent="Entities"]
+
+[connection signal="level_selection" from="UI/MainMenu" to="." method="_on_main_menu_level_selection"]
+[connection signal="start_game" from="UI/MainMenu" to="." method="_on_main_menu_start_game"]
