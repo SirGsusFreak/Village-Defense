@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://68sviqvk613g"]
+[gd_scene load_steps=4 format=3 uid="uid://68sviqvk613g"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_ur4hc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tqvau"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rlghe"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ur4hc")
+level_name = "Basic Level"
 
 [node name="Player" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tqvau")
@@ -15,3 +19,4 @@ mesh = SubResource("PlaneMesh_rlghe")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.16494, 0)
+current = true
