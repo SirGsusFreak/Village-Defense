@@ -11,23 +11,28 @@ func _ready() -> void:
 	focus_button()
 	load_level_list()
 
+
 func _on_start_button_pressed() -> void:
 	if level_list.is_anything_selected():
-		emit_signal("start_game")
+		start_game.emit()
 	else: pass
+
 
 func _on_visbility_changed() -> void:
 	if visible:
 		focus_button()
 
+
 func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+	Signalbus.emit_signal("exit_game")
+
 
 func focus_button() -> void:
 	if buttons_v_box:
 		var button: Button = buttons_v_box.get_child(0)
 		if button is Button:
 			button.grab_focus()
+
 
 func load_level_list() -> void:
 	var level_dir = DirAccess.open("res://scenes/testing/")
@@ -42,6 +47,7 @@ func load_level_list() -> void:
 			
 	else: level_list.add_item("empty", null, false)
 
+
 func _on_level_list_item_selected(index: int) -> void:
 	selected = level_list.get_item_text(index)
-	emit_signal("level_selection", selected)
+	level_selection.emit(selected)

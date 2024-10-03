@@ -62,9 +62,14 @@ alignment = 1
 layout_mode = 2
 text = "Resume"
 
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox"]
+layout_mode = 2
+text = "Quit Level"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox"]
 layout_mode = 2
-text = "Exit
-"
+text = "Exit Game"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_level"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/ExitButton" to="." method="_on_exit_button_pressed"]

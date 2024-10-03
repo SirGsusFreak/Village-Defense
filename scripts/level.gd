@@ -1,8 +1,9 @@
+class_name Level
 extends Node3D
 
-class_name Level
-
 @export var level_name: String
+@export var player: CharacterBody3D
+@export var enemies_parent_node: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

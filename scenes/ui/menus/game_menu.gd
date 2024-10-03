@@ -1,6 +1,7 @@
 extends Menu
 
-signal resume_game
+signal resume_game()
+signal quit_level()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +14,12 @@ func _process(delta: float) -> void:
 
 
 func _on_resume_button_pressed() -> void:
-	emit_signal("resume_game")
+	resume_game.emit()
+
+
+func _on_quit_level() -> void:
+	quit_level.emit()
+
+
+func _on_exit_button_pressed() -> void:
+	Signalbus.emit_signal("exit_game")

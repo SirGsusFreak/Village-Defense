@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmp6t6volluf8"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_fsnnv"]
-[ext_resource type="PackedScene" uid="uid://daq1fvbwtx1x7" path="res://objects/player/Player.tscn" id="1_l42av"]
+[ext_resource type="Script" path="res://scenes/testing/level_test_player.gd" id="1_aocsf"]
+[ext_resource type="PackedScene" uid="uid://daq1fvbwtx1x7" path="res://objects/player/Player.tscn" id="2_skvrb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0qtn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_3to3n"]
+[sub_resource type="Sky" id="Sky_tlrtc"]
 sky_material = SubResource("ProceduralSkyMaterial_l0qtn")
 
 [sub_resource type="Environment" id="Environment_xf8s2"]
 background_mode = 2
-sky = SubResource("Sky_3to3n")
+sky = SubResource("Sky_tlrtc")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -21,9 +21,11 @@ glow_enabled = true
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_803mx"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[node name="LevelTest1" type="Node3D"]
-script = ExtResource("1_fsnnv")
+[node name="LevelTestPlayer" type="Node3D" node_paths=PackedStringArray("player", "enemies_parent_node")]
+script = ExtResource("1_aocsf")
 level_name = "Player Test 1"
+player = NodePath("Entities/Player")
+enemies_parent_node = NodePath("Entities/Enemies")
 
 [node name="WorldEnvirement" type="Node" parent="."]
 
@@ -44,4 +46,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_803mx")
 
-[node name="Player" parent="." instance=ExtResource("1_l42av")]
+[node name="Entities" type="Node" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_skvrb")]
+
+[node name="Enemies" type="Node" parent="Entities"]
