@@ -19,7 +19,7 @@ extends CharacterBody3D
 # Reference to the model node
 @export_category("Model")
 @onready var model := $Model
-@onready var hand_right := $Model/root/Skeleton3D/BoneAttachment3D
+@onready var hand_right := $Model/Skeleton3D/BoneAttachment3D
 @onready var weapon := $Model/Weapon
 @onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
 
@@ -30,6 +30,7 @@ enum Weapons { Sword, Pistol }
 var current_weapon = Weapons.Sword
 
 var is_jumping: bool = false
+var on_ground: bool = false
 
 # Called when the node is added to the scene
 func _ready() -> void:
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	update_movement(direction, delta)
 	handle_camera_rotation(delta)
 	update_player_rotation(direction)
-	update_mannequin_state(direction)
+	#update_mannequin_state(direction)
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -75,6 +76,8 @@ func update_movement(direction: Vector3, delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, 0.0, deacceleration * delta)
 		velocity.z = lerp(velocity.z, 0.0, deacceleration * delta)
+	
+	model.set_move_direction(velocity)
 
 	# Handle gravity and jumping
 	handle_vertical_movement(delta)
@@ -87,19 +90,19 @@ func handle_vertical_movement(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = jump_velocity
-			is_jumping = true
-			model.transition_to(model.AnimationState.AIR)
+			model.set_jump_shot(true)
+			model.set_on_ground(false)
+			#model.transition_to(model.AnimationState.AIR)
 		else:
 			velocity.y = 0  # Reset vertical velocity when on the ground
-			is_jumping = false
-			model.set_in_air(false)
+			model.set_on_ground(true)
 	else:
 		if velocity.y < 500:
 			velocity.y += gravity * delta
-			model.transition_to(model.AnimationState.AIR)
+			#model.transition_to(model.AnimationState.AIR)
 		else:
 			velocity.y = 500
-		model.set_in_air(true)
+			model.set_jump_shot(true)
 
 # Update player rotation based on movement and aiming direction
 func update_player_rotation(direction: Vector3) -> void:
@@ -135,19 +138,19 @@ func handle_camera_rotation(delta: float) -> void:
 func rotate_camera_around_player(rotation_amount: float) -> void:
 	camera_pivot.rotate_y(rotation_amount)
 
-# Update the mannequin's animation state based on player movement
-func update_mannequin_state(direction: Vector3) -> void:
-	if not is_on_floor():
-		if is_jumping and velocity.y < 0:
-			model.transition_to(model.AnimationState.AIR)
-		is_jumping = false
-	else:
-		if direction == Vector3.ZERO:
-			model.transition_to(model.AnimationState.IDLE)
-			model.set_is_moving(false)
-		else:
-			model.transition_to(model.AnimationState.RUN)
-			model.set_is_moving(true)
+## Update the mannequin's animation state based on player movement
+#func update_mannequin_state(direction: Vector3) -> void:
+	#if not is_on_floor():
+		#if is_jumping and velocity.y < 0:
+			#model.transition_to(model.AnimationState.AIR)
+		#is_jumping = false
+	#else:
+		#if direction == Vector3.ZERO:
+			#model.transition_to(model.AnimationState.IDLE)
+			#model.set_is_moving(false)
+		#else:
+			#model.transition_to(model.AnimationState.RUN)
+			#model.set_is_moving(true)
 
 
 #extends CharacterBody3D
