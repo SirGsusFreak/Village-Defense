@@ -17,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.44, 0.44, 0.44, 1)
+color = Color(0.365089, 0.465045, 0.442818, 1)
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -38,25 +38,25 @@ theme_override_constants/v_separation = 10
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_a07pg")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 80
 text = "Paused"
 
 [node name="Button" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_a07pg")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 40
 text = "Resume"
 
 [node name="Button2" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_a07pg")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 40
 text = "Setting
 "
 
 [node name="Button3" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_a07pg")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 40
 text = "Quit
 "
