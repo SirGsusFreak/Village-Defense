@@ -7,6 +7,8 @@
 [node name="Game" type="Node"]
 process_mode = 3
 script = ExtResource("1_3r664")
+metadata/_edit_vertical_guides_ = [1152.0, 576.0]
+metadata/_edit_horizontal_guides_ = [648.0, 324.0]
 
 [node name="UI" type="Node" parent="."]
 
