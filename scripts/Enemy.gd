@@ -25,7 +25,7 @@ func _ready():
 	
 	 # Get the player node
 	if player == null:
-		player = get_node("/root/Game/Level/Level/Player")
+		player = get_node("/root/LevelTestPlayer/Entities/Player")
 	
 	# Store the player's position in targ
 	if player:
