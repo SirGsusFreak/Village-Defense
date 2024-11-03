@@ -1,24 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://daq1fvbwtx1x7"]
 
-[ext_resource type="Script" path="res://objects/player/player.gd" id="1_5ip37"]
-[ext_resource type="PackedScene" uid="uid://by5oxb2qc7pf" path="res://assets/models/player/mannequiny.tscn" id="2_2t5db"]
-[ext_resource type="PackedScene" uid="uid://c61urukwnhls3" path="res://scenes/sword.tscn" id="3_goh52"]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_52cos"]
+[ext_resource type="PackedScene" uid="uid://cku1xgortsjke" path="res://assets/models/player/player_model.tscn" id="2_j06in"]
+[ext_resource type="PackedScene" uid="uid://c61urukwnhls3" path="res://scenes/sword.tscn" id="3_w42r7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkaj"]
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource("1_5ip37")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0770497, 0.00588322, 0.136377)
+script = ExtResource("1_52cos")
+
+[node name="Model" parent="." instance=ExtResource("2_j06in")]
+
+[node name="Weapon" type="Node3D" parent="Model"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Sword" parent="Model/Weapon" instance=ExtResource("3_w42r7")]
+transform = Transform3D(-1, -6.69697e-08, -5.61943e-08, 0, 0.642788, -0.766044, 8.74228e-08, -0.766044, -0.642788, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8nkaj")
-
-[node name="Model" parent="." instance=ExtResource("2_2t5db")]
-
-[node name="Weapon" type="Node3D" parent="Model"]
-
-[node name="Sword" parent="Model/Weapon" instance=ExtResource("3_goh52")]
-transform = Transform3D(-1, -6.69697e-08, -5.61943e-08, 0, 0.642788, -0.766044, 8.74228e-08, -0.766044, -0.642788, 0, 0, 0)
 
 [node name="FocusPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
@@ -32,3 +34,6 @@ target_position = Vector3(0, -0.5, 0)
 hit_from_inside = true
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="Body" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29108, 0)
