@@ -26,8 +26,8 @@ extends CharacterBody3D
 @onready var floor_cast := $FloorCast
 
 # Weapon switching
-enum Weapons { Sword, Pistol }
-var current_weapon = Weapons.Sword
+#enum Weapons { Sword, Pistol }
+#var current_weapon = Weapons.Sword
 
 var is_jumping: bool = false
 
@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	handle_camera_rotation(delta)
 	update_player_rotation(direction)
 	update_mannequin_state(direction)
+	handle_weapon_actions()
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -149,6 +150,17 @@ func update_mannequin_state(direction: Vector3) -> void:
 			model.transition_to(model.AnimationState.RUN)
 			model.set_is_moving(true)
 
+# handle weapon actions
+func handle_weapon_actions() -> void:
+	if weapon:
+		if Input.is_action_just_pressed("attack"):
+			weapon.fire()
+		# Switch to Sword
+		if Input.is_action_just_pressed("weapon_one") and weapon.current_weapon != weapon.Weapons.Sword:
+			weapon.switch_weapon(weapon.Weapons.Sword)
+		# Switch to Pistol
+		elif Input.is_action_just_pressed("weapon_two") and weapon.current_weapon != weapon.Weapons.Sub:
+			weapon.switch_weapon(weapon.Weapons.Sub)
 
 #extends CharacterBody3D
 #

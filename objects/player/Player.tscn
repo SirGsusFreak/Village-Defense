@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://daq1fvbwtx1x7"]
+[gd_scene load_steps=7 format=3 uid="uid://daq1fvbwtx1x7"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_5ip37"]
 [ext_resource type="PackedScene" uid="uid://by5oxb2qc7pf" path="res://assets/models/player/mannequiny.tscn" id="2_2t5db"]
+[ext_resource type="Script" path="res://scripts/Weapons.gd" id="3_bjkh7"]
 [ext_resource type="PackedScene" uid="uid://c61urukwnhls3" path="res://scenes/sword.tscn" id="3_goh52"]
+[ext_resource type="PackedScene" uid="uid://c8qtj4h81y8k2" path="res://scenes/submachine.tscn" id="4_vwkgs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8nkaj"]
 
@@ -16,9 +18,14 @@ shape = SubResource("CapsuleShape3D_8nkaj")
 [node name="Model" parent="." instance=ExtResource("2_2t5db")]
 
 [node name="Weapon" type="Node3D" parent="Model"]
+script = ExtResource("3_bjkh7")
 
 [node name="Sword" parent="Model/Weapon" instance=ExtResource("3_goh52")]
 transform = Transform3D(-1, -6.69697e-08, -5.61943e-08, 0, 0.642788, -0.766044, 8.74228e-08, -0.766044, -0.642788, 0, 0, 0)
+visible = false
+
+[node name="Submachine" parent="Model/Weapon" instance=ExtResource("4_vwkgs")]
+transform = Transform3D(0.0166546, 0, -0.127643, 0, 0.204054, 0, 0.17469, 0, 0.0121692, 0.00449312, 0.0323734, 0)
 
 [node name="FocusPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
