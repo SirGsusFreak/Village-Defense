@@ -67,7 +67,7 @@ func set_facing_angle(value: float):
 
 func set_jump_shot(value: bool):
 	jump_shot = value
-	animation_tree["parameters/Shot_Jump/request"] = "Fire"
+	animation_tree["parameters/Shot_Jump/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	#animation_tree["parameters/Shot_Jump/active"] = value
 
 

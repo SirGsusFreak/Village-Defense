@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnmuw1xjqsr41"]
+[gd_scene load_steps=3 format=3 uid="uid://cnmuw1xjqsr41"]
 
-[ext_resource type="FontFile" uid="uid://cus18svvcnps" path="res://hHachimaki.ttf" id="1_a07pg"]
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_nbw4q"]
+[ext_resource type="FontFile" uid="uid://cus18svvcnps" path="res://hHachimaki.ttf" id="2_u5udv"]
 
 [node name="Paused_menu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nbw4q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -37,26 +39,26 @@ theme_override_constants/v_separation = 10
 [node name="Label" type="Label" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_a07pg")
+theme_override_fonts/font = ExtResource("2_u5udv")
 theme_override_font_sizes/font_size = 80
 text = "Paused"
 
 [node name="Button" type="Button" parent="GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_a07pg")
+theme_override_fonts/font = ExtResource("2_u5udv")
 theme_override_font_sizes/font_size = 40
 text = "Resume"
 
 [node name="Button2" type="Button" parent="GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_a07pg")
+theme_override_fonts/font = ExtResource("2_u5udv")
 theme_override_font_sizes/font_size = 40
 text = "Setting
 "
 
 [node name="Button3" type="Button" parent="GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_a07pg")
+theme_override_fonts/font = ExtResource("2_u5udv")
 theme_override_font_sizes/font_size = 40
 text = "Quit
 "

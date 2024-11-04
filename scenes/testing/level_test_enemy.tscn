@@ -1,35 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmp6t6volluf8"]
+[gd_scene load_steps=12 format=3 uid="uid://clhuu8f6o43w2"]
 
-[ext_resource type="Script" path="res://scripts/level_test_player.gd" id="1_aocsf"]
-[ext_resource type="PackedScene" uid="uid://daq1fvbwtx1x7" path="res://objects/player/Player.tscn" id="2_skvrb"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_vkdkr"]
+[ext_resource type="PackedScene" uid="uid://daq1fvbwtx1x7" path="res://objects/player/Player.tscn" id="2_4cr8j"]
+[ext_resource type="PackedScene" uid="uid://w1n3pfts6v14" path="res://objects/environments/wall.tscn" id="3_0nq4m"]
+[ext_resource type="PackedScene" uid="uid://cnswfhobjk8by" path="res://objects/enemies/Enemy3D.tscn" id="3_hbhw0"]
+[ext_resource type="PackedScene" uid="uid://cwvdm6t4wlpfu" path="res://objects/utils/Spawner.tscn" id="5_0cvkl"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0qtn"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rlhdw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_p3w22"]
-sky_material = SubResource("ProceduralSkyMaterial_l0qtn")
+[sub_resource type="Sky" id="Sky_tlrtc"]
+sky_material = SubResource("ProceduralSkyMaterial_rlhdw")
 
-[sub_resource type="Environment" id="Environment_xf8s2"]
+[sub_resource type="Environment" id="Environment_fueuk"]
 background_mode = 2
-sky = SubResource("Sky_p3w22")
+sky = SubResource("Sky_tlrtc")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_h2rx7"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_quoji"]
 vertices = PackedVector3Array(-3.75, 0.5, -3.75, -3.5, 0.5, -3.25, -3.25, 0.5, -9.5, -9.5, 0.5, 1, -5.75, 0.5, 0.75, -5.75, 0.5, -3.5, -9.5, 0.5, -9.5, -3.5, 0.5, 2, -2.5, 0.5, 3.25, 2.75, 0.5, 3.25, 9.5, 0.5, 3, 9.5, 0.5, -9.5, -3.75, 0.5, 2.5, -3, 0.5, 3.5, -0.75, 0.5, 9.5, -0.75, 0.5, 5.5, -3, 0.5, 5.25, -5.5, 0.5, 2.5, -9.5, 0.5, 9.5, 3, 0.5, 5.5, 3.25, 0.5, 3.5, 9.5, 0.5, 9.5)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 6), PackedInt32Array(6, 5, 3), PackedInt32Array(9, 8, 7), PackedInt32Array(7, 1, 9), PackedInt32Array(9, 1, 2), PackedInt32Array(9, 2, 10), PackedInt32Array(10, 2, 11), PackedInt32Array(13, 12, 8), PackedInt32Array(8, 12, 7), PackedInt32Array(14, 16, 15), PackedInt32Array(12, 13, 17), PackedInt32Array(17, 13, 16), PackedInt32Array(17, 16, 3), PackedInt32Array(3, 16, 18), PackedInt32Array(18, 16, 14), PackedInt32Array(3, 4, 17), PackedInt32Array(14, 15, 19), PackedInt32Array(20, 9, 10), PackedInt32Array(20, 10, 19), PackedInt32Array(10, 21, 19), PackedInt32Array(19, 21, 14)]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nql5t"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ra6dg"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_803mx"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l66xq"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[node name="LevelTestPlayer" type="Node3D" node_paths=PackedStringArray("player", "enemies_parent_node")]
-script = ExtResource("1_aocsf")
-level_name = "Player Test 1"
-player = NodePath("Entities/Player")
-enemies_parent_node = NodePath("Entities/Enemies")
+[node name="LevelTestEnemy" type="Node3D"]
+script = ExtResource("1_vkdkr")
+level_name = "Enemy Test"
 
 [node name="WorldEnvirement" type="Node" parent="."]
 
@@ -38,23 +39,37 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="WorldEnvirement"]
-environment = SubResource("Environment_xf8s2")
+environment = SubResource("Environment_fueuk")
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("2_skvrb")]
+[node name="Player" parent="Entities" instance=ExtResource("2_4cr8j")]
 
 [node name="Enemies" type="Node" parent="Entities"]
 
+[node name="CharacterBody3D" parent="Entities/Enemies" instance=ExtResource("3_hbhw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 7)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_h2rx7")
+navigation_mesh = SubResource("NavigationMesh_quoji")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("PlaneMesh_nql5t")
+mesh = SubResource("PlaneMesh_ra6dg")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_803mx")
+shape = SubResource("ConcavePolygonShape3D_l66xq")
+
+[node name="Wall_01" parent="." instance=ExtResource("3_0nq4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15923)
+
+[node name="Wall_02" parent="." instance=ExtResource("3_0nq4m")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4.60813, 0, -0.497047)
+
+[node name="Spawner" parent="." instance=ExtResource("5_0cvkl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.3, 7)
+enemy_scene = ExtResource("3_hbhw0")
+enemy_parent = NodePath("../Entities/Enemies")

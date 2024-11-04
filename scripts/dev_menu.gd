@@ -1,6 +1,7 @@
 extends Menu
 
 signal start_game()
+signal back()
 signal level_selection(path: String)
 
 @onready var buttons_v_box: VBoxContainer = %ButtonsVBox
@@ -23,8 +24,8 @@ func _on_visbility_changed() -> void:
 		focus_button()
 
 
-func _on_exit_button_pressed() -> void:
-	Signalbus.emit_signal("exit_game")
+func _on_back_button_pressed() -> void:
+	emit_signal("back")
 
 
 func focus_button() -> void:

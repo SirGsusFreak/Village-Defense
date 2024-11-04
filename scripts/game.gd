@@ -2,6 +2,7 @@ extends Node
 
 @onready var ui_node = $UI
 @onready var main_menu = $UI/MainMenu
+@onready var dev_menu = $UI/DevMenu
 @onready var game_menu = $UI/GameMenu
 @export var active_menu: Menu = main_menu
 @export var GameMenuScene: PackedScene
@@ -21,19 +22,28 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"): toggle_pause()
 	
 
+func _on_main_menu_to_dev() -> void:
+	dev_menu.show()
+	main_menu.hide()
+	
 
-func _on_main_menu_start_game() -> void:
+func _on_dev_menu_start_game() -> void:
 	level = load(level_path).instantiate()
 	level_node.add_child(level)
-	main_menu.hide()
+	dev_menu.hide()
 	play_game(true)
 
 
-func _on_main_menu_level_selection(path: String) -> void:
+func _on_dev_menu_back() -> void:
+	main_menu.show()
+	dev_menu.hide()
+
+
+func _on_dev_menu_level_selection(path: String) -> void:
 	level_path = path
 
 
@@ -44,6 +54,7 @@ func _on_game_menu_resume_game() -> void:
 func _on_game_menu_quit_level() -> void:
 	play_game(false)
 	main_menu.show()
+	dev_menu.hide()
 	game_menu.hide()
 	level_node.remove_child(level)
 
