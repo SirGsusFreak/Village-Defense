@@ -10,19 +10,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
+	if $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
 	pass
 	
 
 
 
 func _on_start_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/testing/Basic_Guide.tscn")
+	get_tree().change_scene_to_file("res://objects/player.tscn")
 
 
 
 
 func _on_setting_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://settings.tscn")
 	
 	
 	
