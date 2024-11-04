@@ -51,7 +51,6 @@ transitions = ["Start", "rifle jump", SubResource("AnimationNodeStateMachineTran
 fadein_time = 0.05
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4fae6"]
-graph_offset = Vector2(-219.855, -220.03)
 nodes/Anim_Move/node = SubResource("AnimationNodeBlendSpace2D_4lp88")
 nodes/Anim_Move/position = Vector2(128, -32)
 nodes/SM_Jump/node = SubResource("AnimationNodeStateMachine_ry6cn")
@@ -156,7 +155,7 @@ bones/48/position = Vector3(6.64577e-06, 28.4719, 6.16498e-06)
 bones/48/rotation = Quaternion(0.243263, 0.0493327, -0.0123895, 0.968626)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Skeleton3D" index="0"]
-transform = Transform3D(0.00199419, -0.00979811, 0.000141873, 0.000284254, -8.6876e-05, -0.00999558, 0.00979502, 0.00199734, 0.000261191, -1.35358, 2.8148, -0.0790603)
+transform = Transform3D(0.00199419, -0.00979811, 0.000141871, 0.000284257, -8.68749e-05, -0.00999558, 0.00979502, 0.00199734, 0.000261193, -1.35358, 2.8148, -0.0790599)
 bone_name = "RightHand"
 bone_idx = 27
 

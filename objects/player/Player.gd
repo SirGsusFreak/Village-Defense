@@ -53,7 +53,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = get_input_direction().normalized()
 	update_movement(direction, delta)
-	handle_camera_rotation(delta)
+	#handle_camera_rotation(delta)
 	rotate_body_towards_cursor()
 	
 	aim_line.DrawLine(hand_right.global_position, intersection_point, Color(255,0,0))
@@ -174,18 +174,18 @@ func update_animation_movement(direction: Vector3) -> void:
 
 
 # Handle camera rotation based on Q and E input
-func handle_camera_rotation(delta: float) -> void:
-	if Input.is_action_pressed("camera_rotate_counterclockwise"):
-		facing_angle = facing_angle + camera_rotate_speed * delta
-		rotate_camera_around_player(camera_rotate_speed * delta)
-	elif Input.is_action_pressed("camera_rotate_clockwise"):
-		facing_angle = facing_angle - camera_rotate_speed * delta
-		rotate_camera_around_player(-camera_rotate_speed * delta)
+#func handle_camera_rotation(delta: float) -> void:
+	#if Input.is_action_pressed("camera_rotate_counterclockwise"):
+		#facing_angle = facing_angle + camera_rotate_speed * delta
+		#rotate_camera_around_player(camera_rotate_speed * delta)
+	#elif Input.is_action_pressed("camera_rotate_clockwise"):
+		#facing_angle = facing_angle - camera_rotate_speed * delta
+		#rotate_camera_around_player(-camera_rotate_speed * delta)
 
 
 # Rotate the camera pivot around the player
-func rotate_camera_around_player(rotation_amount: float) -> void:
-	camera_pivot.rotate_y(rotation_amount)
+#func rotate_camera_around_player(rotation_amount: float) -> void:
+	#camera_pivot.rotate_y(rotation_amount)
 	
 ## Update the mannequin's animation state based on player movement
 #func update_mannequin_state(direction: Vector3) -> void:
