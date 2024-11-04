@@ -1,16 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbiggxu6b04j1"]
+[gd_scene load_steps=5 format=3 uid="uid://cbiggxu6b04j1"]
 
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_3r664"]
-[ext_resource type="PackedScene" uid="uid://gojxdxg7huag" path="res://scenes/ui/menus/main_menu.tscn" id="2_72mt2"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_3r664"]
+[ext_resource type="PackedScene" uid="uid://vdrt2j1xpd82" path="res://scenes/ui/menus/main_menu.tscn" id="2_72mt2"]
+[ext_resource type="PackedScene" uid="uid://gojxdxg7huag" path="res://scenes/ui/menus/dev_menu.tscn" id="3_dcloy"]
 [ext_resource type="PackedScene" uid="uid://dhypvn7rk8qfk" path="res://scenes/ui/menus/game_menu.tscn" id="3_fhn6w"]
 
 [node name="Game" type="Node"]
 process_mode = 3
 script = ExtResource("1_3r664")
+metadata/_edit_vertical_guides_ = [1152.0, 576.0]
+metadata/_edit_horizontal_guides_ = [648.0, 324.0]
 
 [node name="UI" type="Node" parent="."]
 
 [node name="MainMenu" parent="UI" instance=ExtResource("2_72mt2")]
+
+[node name="DevMenu" parent="UI" instance=ExtResource("3_dcloy")]
+visible = false
 
 [node name="GameMenu" parent="UI" instance=ExtResource("3_fhn6w")]
 visible = false
@@ -26,7 +32,9 @@ process_mode = 1
 
 [node name="NPCs" type="Node" parent="Entities"]
 
-[connection signal="level_selection" from="UI/MainMenu" to="." method="_on_main_menu_level_selection"]
-[connection signal="start_game" from="UI/MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="to_dev_menu" from="UI/MainMenu" to="." method="_on_main_menu_to_dev"]
+[connection signal="back" from="UI/DevMenu" to="." method="_on_dev_menu_back"]
+[connection signal="level_selection" from="UI/DevMenu" to="." method="_on_dev_menu_level_selection"]
+[connection signal="start_game" from="UI/DevMenu" to="." method="_on_dev_menu_start_game"]
 [connection signal="quit_level" from="UI/GameMenu" to="." method="_on_game_menu_quit_level"]
 [connection signal="resume_game" from="UI/GameMenu" to="." method="_on_game_menu_resume_game"]
