@@ -55,6 +55,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = get_input_direction().normalized()
 	update_movement(direction, delta)
+	#handle_camera_rotation(delta)
 	rotate_body_towards_cursor()
 	#handle_camera_rotation(delta)
 	
