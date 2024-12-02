@@ -4,6 +4,8 @@ extends Node3D
 @export var spawn_interval: float = 5.0  # Initial spawn interval in seconds
 @export var spawn_acceleration: float = 0.9  # Factor to decrease spawn time over time
 @export var enemy_parent: NodePath  # Node path to the parent node for enemies
+@export var player_path: NodePath  # Path to the player node
+@export var tower_path: NodePath  # Path to the tower node
 
 var spawn_timer = 0.0  # Timer to control spawning
 var min_spawn_interval = 1.0  # Minimum interval to prevent too fast spawning
@@ -17,7 +19,7 @@ func _process(delta: float):
 	spawn_timer -= delta
 	if spawn_timer <= 0:
 		_spawn_enemy()
-		# Reset timer and decrease the interval slightly for next spawn
+		# Reset timer and decrease the interval slightly for the next spawn
 		spawn_timer = max(spawn_interval * spawn_acceleration, min_spawn_interval)
 		spawn_interval = spawn_timer  # Update spawn_interval to keep decreasing
 
@@ -32,3 +34,14 @@ func _spawn_enemy():
 			var parent_node = get_node(enemy_parent)
 			if parent_node:
 				parent_node.add_child(enemy_instance)  # Add enemy as a child of the specified node
+				
+				# Assign target paths dynamically
+				_set_enemy_targets(enemy_instance)
+
+func _set_enemy_targets(enemy_instance):
+	# Ensure player and tower paths are valid before assigning
+	var player_node = get_node_or_null(player_path)
+	var tower_node = get_node_or_null(tower_path)
+	
+	if player_node and tower_node and enemy_instance.has_method("set_target_paths"):
+		enemy_instance.set_target_paths(player_node, tower_node)

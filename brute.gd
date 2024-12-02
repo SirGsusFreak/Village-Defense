@@ -1,21 +1,19 @@
 extends CharacterBody3D
 
-class_name Enemy
-
 # Variables to store the player, tower, and speed of the enemy
 @export var player_path: NodePath = NodePath("../../Player")
 @export var tower_path: NodePath = NodePath("../../../NavigationRegion3D/Tower")
 @export var speed: float = 5
 
 # Variables for enemy attributes
-@export var health: float = 10
-@export var max_health: int
-@export var attack_power: int
-@export var defense: int
+@export var health: float = 100
+@export var max_health: int = health
+@export var attack_power: int = 5
+@export var defense: int = 10
 @export var is_alive: bool = true
-@export var experience: int
+@export var experience: int = 100
 @export var loot_table: Array = []
-@export var attack_range: float
+@export var attack_range: float = 1
 
 @onready var agent = $NavigationAgent3D
 var targ: Vector3
@@ -104,7 +102,7 @@ func drop_loot():
 			dropped_item.global_transform.origin = global_transform.origin
 
 func attack():
-	if position.distance_to(player.global_transform.origin) <= attack_range and player.has_method("take_damage"):
+	if targ == player.global_transform.origin and player.has_method("take_damage"):
 		player.take_damage(attack_power)
-	elif position.distance_to(tower.global_transform.origin) <= attack_range and tower.has_method("take_damage"):
+	else:
 		tower.take_damage(attack_power)
