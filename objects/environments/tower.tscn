@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://db6e8j1qf10q3"]
+
+[ext_resource type="Script" path="res://scripts/Tower.gd" id="1_2awjo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4pwt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_b8lv4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xh6bg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frqe5"]
+size = Vector3(3.0304, 4.61902, 2.82178)
+
+[node name="Tower" type="Node3D"]
+script = ExtResource("1_2awjo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 0.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_c4pwt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0.0185407, 1.70385, -0.000982523)
+mesh = SubResource("CylinderMesh_b8lv4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 0.1, 0, 0, 0, 1.25, 0.0491037, 3.22689, 0.0104681)
+mesh = SubResource("BoxMesh_xh6bg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.1, 0, 0, 0, 0.75, 0.0491037, 3.32718, 0.0104681)
+mesh = SubResource("BoxMesh_xh6bg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.297313, 0.384567, 0.117104, -0.34476, 0.318829, -0.171721, -0.206749, 0.0213642, 0.454751, 0.0491037, 3.75833, 0.0104681)
+mesh = SubResource("BoxMesh_xh6bg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0733032, 1.80951, 0.0187988)
+shape = SubResource("BoxShape3D_frqe5")

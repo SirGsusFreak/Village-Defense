@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 Toolkit="*res://addons/godottoolkit/toolkit.gd"
 Signalbus="*res://scripts/signalbus.gd"
+DrawLine3d="*res://addons/DrawLine3D.gd"
 
 [display]
 
@@ -26,7 +27,11 @@ window/size/always_on_top=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godottoolkit/plugin.cfg")
+enabled=PackedStringArray()
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
