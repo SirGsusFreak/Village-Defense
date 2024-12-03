@@ -1,9 +1,10 @@
+class_name Tower
 extends Node3D
 
 @export var health: int = 100
 @export var max_health: int = 100
 
-func take_damage(amount: int):
+func _on_take_damage(amount: int):
 	health -= amount
 	print("Tower took damage! Remaining health: ", health)
 	
@@ -11,5 +12,4 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	queue_free()
-	print("The tower has been destroyed!")
+	Signalbus.emit_signal("tower_destroyed")

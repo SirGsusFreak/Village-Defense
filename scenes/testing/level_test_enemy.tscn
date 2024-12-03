@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://clhuu8f6o43w2"]
+[gd_scene load_steps=14 format=3 uid="uid://clhuu8f6o43w2"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_vkdkr"]
+[ext_resource type="Script" path="res://scenes/testing/level_test_enemy.gd" id="1_3s44k"]
 [ext_resource type="PackedScene" uid="uid://daq1fvbwtx1x7" path="res://objects/player/Player.tscn" id="2_4cr8j"]
 [ext_resource type="PackedScene" uid="uid://w1n3pfts6v14" path="res://objects/environments/wall.tscn" id="3_0nq4m"]
 [ext_resource type="PackedScene" uid="uid://cnswfhobjk8by" path="res://objects/enemies/Enemy3D.tscn" id="3_hbhw0"]
 [ext_resource type="PackedScene" uid="uid://cwvdm6t4wlpfu" path="res://objects/utils/Spawner.tscn" id="5_0cvkl"]
+[ext_resource type="Script" path="res://scripts/spawners.gd" id="5_8waba"]
 [ext_resource type="PackedScene" uid="uid://db6e8j1qf10q3" path="res://objects/environments/tower.tscn" id="6_fn3do"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rlhdw"]
@@ -30,7 +31,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Arr
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="LevelTestEnemy" type="Node3D"]
-script = ExtResource("1_vkdkr")
+script = ExtResource("1_3s44k")
 level_name = "Enemy Test"
 
 [node name="WorldEnvirement" type="Node" parent="."]
@@ -70,7 +71,10 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4.60813, 0, -0.497047)
 
 [node name="Tower" parent="NavigationRegion3D" instance=ExtResource("6_fn3do")]
 
-[node name="Spawner" parent="." instance=ExtResource("5_0cvkl")]
+[node name="Spawners" type="Node" parent="."]
+script = ExtResource("5_8waba")
+
+[node name="Spawner" parent="Spawners" instance=ExtResource("5_0cvkl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.3, 7)
 enemy_scene = ExtResource("3_hbhw0")
-enemy_parent = NodePath("../Entities/Enemies")
+enemy_parent = NodePath("../../Entities/Enemies")

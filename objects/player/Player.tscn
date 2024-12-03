@@ -9,6 +9,7 @@
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0770497, 0.00588322, 0.136377)
 script = ExtResource("1_52cos")
+health_current = 100
 
 [node name="Model" parent="." instance=ExtResource("2_j06in")]
 
