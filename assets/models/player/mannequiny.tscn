@@ -1,66 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://by5oxb2qc7pf"]
+[gd_scene load_steps=17 format=3 uid="uid://by5oxb2qc7pf"]
 
 [ext_resource type="PackedScene" uid="uid://c7rsj8gl8w5a8" path="res://assets/models/player/mannequiny-0.4.0.glb" id="1_lx5f6"]
 [ext_resource type="Script" path="res://assets/models/player/mannequiny.gd" id="2_67h4e"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eg5ys"]
-animation = &"fight_idle"
-use_custom_timeline = true
-timeline_length = 2.0
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qpkgc"]
-filter_enabled = true
-filters = ["root/Skeleton3D:ball.l", "root/Skeleton3D:ball.r", "root/Skeleton3D:calf.l", "root/Skeleton3D:calf.r", "root/Skeleton3D:foot.l", "root/Skeleton3D:foot.r", "root/Skeleton3D:head", "root/Skeleton3D:neck_01", "root/Skeleton3D:pelvis", "root/Skeleton3D:spine_01", "root/Skeleton3D:spine_02", "root/Skeleton3D:thigh.l", "root/Skeleton3D:thigh.r"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkgyh"]
-animation = &"run"
-play_mode = 1
-use_custom_timeline = true
-timeline_length = 0.75
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_go84v"]
-animation = &"idle"
-use_custom_timeline = true
-timeline_length = 0.75
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_skpds"]
-animation = &"run"
-use_custom_timeline = true
-timeline_length = 0.75
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 1
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8apel"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_fkgyh")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_go84v")
-blend_point_1/pos = 0.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_skpds")
-blend_point_2/pos = 1.0
-snap = 0.2
-value_label = "movement"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rtgnb"]
-resource_name = "fight_blend_tree"
-graph_offset = Vector2(-74.0585, -5.31393)
-nodes/Fight/node = SubResource("AnimationNodeAnimation_eg5ys")
-nodes/Fight/position = Vector2(300, 160)
-"nodes/Fighting Stance/node" = SubResource("AnimationNodeBlend2_qpkgc")
-"nodes/Fighting Stance/position" = Vector2(700, 100)
-nodes/Movement/node = SubResource("AnimationNodeBlendSpace1D_8apel")
-nodes/Movement/position = Vector2(360, 340)
-nodes/output/position = Vector2(1020, 160)
-node_connections = [&"Fighting Stance", 0, &"Fight", &"Fighting Stance", 1, &"Movement", &"output", 0, &"Fighting Stance"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y224w"]
 animation = &"air_jump"
@@ -104,7 +45,6 @@ advance_condition = &"in_air"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_efctx"]
 xfade_time = 0.2
-switch_mode = 1
 advance_condition = &"on_land"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0hr5m"]
@@ -120,29 +60,22 @@ advance_condition = &"in_air"
 xfade_time = 0.1
 advance_condition = &"is_moving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gp07j"]
-switch_mode = 1
-advance_condition = &"aiming"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m634f"]
-xfade_time = 0.2
-advance_condition = &"aiming"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_psm7j"]
+advance_condition = &"in_air"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n8in7"]
-states/BlendTree/node = SubResource("AnimationNodeBlendTree_rtgnb")
-states/BlendTree/position = Vector2(382, -28)
 states/End/position = Vector2(832, 107.6)
 states/Start/position = Vector2(87.8, 79.6)
 states/air_jump/node = SubResource("AnimationNodeAnimation_y224w")
-states/air_jump/position = Vector2(529.214, 242.8)
+states/air_jump/position = Vector2(623.614, 248.4)
 states/air_land/node = SubResource("AnimationNodeAnimation_qtbrm")
 states/air_land/position = Vector2(239.8, 242.8)
 states/idle/node = SubResource("AnimationNodeAnimation_01ckp")
-states/idle/position = Vector2(276.8, 79.6)
+states/idle/position = Vector2(252, 81.1442)
 states/run/node = SubResource("AnimationNodeAnimation_io680")
-states/run/position = Vector2(480, 80.0224)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_82eht"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_a1p80"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_t3otn"), "run", "air_jump", SubResource("AnimationNodeStateMachineTransition_7erxw"), "air_jump", "air_land", SubResource("AnimationNodeStateMachineTransition_efctx"), "air_land", "idle", SubResource("AnimationNodeStateMachineTransition_0hr5m"), "idle", "air_jump", SubResource("AnimationNodeStateMachineTransition_bs7or"), "air_land", "run", SubResource("AnimationNodeStateMachineTransition_eljoh"), "run", "BlendTree", SubResource("AnimationNodeStateMachineTransition_gp07j"), "idle", "BlendTree", SubResource("AnimationNodeStateMachineTransition_m634f")]
-graph_offset = Vector2(-308, -129)
+states/run/position = Vector2(447.2, 78.336)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_82eht"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_a1p80"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_t3otn"), "run", "air_jump", SubResource("AnimationNodeStateMachineTransition_7erxw"), "air_jump", "air_land", SubResource("AnimationNodeStateMachineTransition_efctx"), "air_land", "idle", SubResource("AnimationNodeStateMachineTransition_0hr5m"), "idle", "air_jump", SubResource("AnimationNodeStateMachineTransition_bs7or"), "air_land", "run", SubResource("AnimationNodeStateMachineTransition_eljoh"), "air_land", "air_jump", SubResource("AnimationNodeStateMachineTransition_psm7j")]
+graph_offset = Vector2(-305, -57)
 
 [node name="mannequiny-0_4_0" instance=ExtResource("1_lx5f6")]
 script = ExtResource("2_67h4e")
@@ -207,9 +140,6 @@ autoplay = "idle"
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_n8in7")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/aiming = false
 parameters/conditions/in_air = false
 parameters/conditions/is_moving = false
 parameters/conditions/on_land = false
-"parameters/BlendTree/Fighting Stance/blend_amount" = 0.65
-parameters/BlendTree/Movement/blend_position = 1.0

@@ -16,7 +16,8 @@ enum AnimationState {
 
 var move_direction = Vector3.ZERO : set = set_move_direction
 var is_moving = false : set = set_is_moving
-var aiming = false : set = set_is_aiming
+var in_air = false : set = set_in_air
+var on_land = false : set = set_on_land
 var movement = 0.0 : set = set_movement
 
 func _ready() -> void:
@@ -48,10 +49,15 @@ func set_is_moving(value: bool) -> void:
 	is_moving = value
 	animation_tree["parameters/conditions/is_moving"] = value
 	
-func set_is_aiming(value: bool) -> void:
-	aiming = value
-	
-	
+func set_in_air(value: bool) -> void:
+	in_air = value
+	animation_tree["parameters/conditions/in_air"] = value
+
+func set_on_land(value: bool) -> void:
+	on_land = value
+	animation_tree["parameters/conditions/on_land"] = value
+
+
 func get_bone(bone_name: String):
 	var bone = skeleton.find_bone(bone_name)
 	return bone
@@ -67,7 +73,5 @@ func transition_to(state_id: int) -> void:
 			_playback.travel("run")
 		AnimationState.AIR:
 			_playback.travel("air_jump")
-		AnimationState.AIMING:
-			_playback.travel("fight_blend_tree")
 		_:
 			_playback.travel("idle")
