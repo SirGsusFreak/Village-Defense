@@ -8,6 +8,7 @@
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_x1ipb")
+attack_range = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_t6l37")
