@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_k76u2"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Spawner" type="Node3D"]
 script = ExtResource("1_k76u2")
 
 [node name="Node" type="Node" parent="."]

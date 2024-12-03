@@ -19,6 +19,9 @@ var level_path: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signalbus.connect("exit_game", _exit_game)
+	Signalbus.connect("player_death", _on_player_death)
+	Signalbus.connect("tower_destroyed", _on_tower_destroyed)
+	Signalbus.connect("game_over", game_over)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,10 +29,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"): toggle_pause()
 	
 
+
 func _on_main_menu_to_dev() -> void:
 	dev_menu.show()
 	main_menu.hide()
-	
+
 
 func _on_dev_menu_start_game() -> void:
 	level = load(level_path).instantiate()
@@ -75,3 +79,17 @@ func toggle_pause() -> void:
 	else: 
 		play_game(false)
 		game_menu.show()
+
+
+func _on_player_death() -> void:
+	print("You have died!")
+	game_over()
+
+
+func _on_tower_destroyed() -> void:
+	print("The tower was destroyed!")
+	game_over()
+
+
+func game_over() -> void:
+	print("-- Game Over! --")
