@@ -28,6 +28,10 @@ window/size/always_on_top=true
 
 enabled=PackedStringArray("res://addons/godottoolkit/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_forward={

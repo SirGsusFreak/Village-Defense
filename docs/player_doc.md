@@ -20,4 +20,3 @@ Weapon wheel
 : Access to the weapons for controller users will be used through a wheel.
 
 ## Variables
-
