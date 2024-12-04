@@ -18,12 +18,17 @@ extends CharacterBody3D
 @export_category("Camera")
 @onready var camera: Camera3D = $FocusPoint/Camera3D
 
+var bullet  = load("res://scenes/Bullet.tscn")
+var instance
+
 ## Reference to the model node
 @export_category("Model")
 @onready var model := $Model
 @onready var hand_right := $Model/Skeleton3D/RightHand
 @onready var weapon := $Model/Weapon
 @onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
+@onready var rifle_anim = $Model/Weapon/Rifle/AnimationPlayer
+@onready var riffle_barrel = $Model/Weapon/Rifle/RayCast3D
 @onready var aim_cast := $Model/AimCast
 @onready var body := $Body
 
@@ -38,8 +43,8 @@ var aim_line: DrawLine3d = preload("res://addons/DrawLine3D.gd").new()
 @onready var hud := $Hud
 
 ## Weapon switching
-enum Weapons { Sword, Pistol }
-var current_weapon = Weapons.Sword
+enum Weapons { Sword, Rifle }
+var current_weapon = Weapons.Rifle
 
 var is_jumping: bool = false
 var on_ground: bool = false
@@ -47,7 +52,7 @@ var on_ground: bool = false
 
 ## Called when the node is added to the scene
 func _ready() -> void:
-	weapon.reparent(hand_right, false)
+	weapon.reparent(hand_right, true)
 	health_current = max_health
 	hand_right.add_child(aim_line)
 
@@ -59,6 +64,13 @@ func _physics_process(delta: float) -> void:
 	rotate_body_towards_cursor()
 	update_hud()
 	aim_line.DrawLine(hand_right.global_position, mouse_point, Color(255,0,0))
+	if Input.is_action_pressed("shoot"):
+		if !rifle_anim.is_playing():
+			rifle_anim.play("Shoot")
+			instance = bullet.instantiate()
+			instance.position =riffle_barrel.global_position
+			instance.transform.basis = riffle_barrel.global_transform.basis
+			get_parent().add_child(instance)
 
 
 ## Get the movement input from the player
