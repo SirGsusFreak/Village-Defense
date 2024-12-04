@@ -38,7 +38,7 @@ func _spawn_enemy():
 			var parent_node = get_node(enemy_parent)
 			if parent_node:
 				parent_node.add_child(enemy_instance)  # Add enemy as a child of the specified node
-				enemy_instance.set_id(spawn_count)
+				enemy_instance.id = spawn_count
 				var enemy_str = "Enemy#{id}".format({"id": spawn_count})
 				enemy_instance.name = enemy_str
 				spawn_count += 1

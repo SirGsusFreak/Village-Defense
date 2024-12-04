@@ -22,8 +22,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_quoji"]
-vertices = PackedVector3Array(-9.5, 0.5, 1.25, -5.75, 0.5, 1, -5.75, 0.5, -3.25, -4, 0.5, -3.5, -4, 0.5, -9.5, -9.5, 0.5, -9.5, 1.25, 0.75, 0.5, 0, 0.75, 1, 0, 0.5, 3, 2.75, 0.5, 3, -3.5, 0.5, -3.25, -3.5, 0.5, -0.5, -1, 0.75, -0.5, -0.5, 0.75, -1.25, 0.5, 0.75, -1.25, 1.25, 0.75, -0.5, 9.5, 0.5, 2.75, 9.5, 0.5, -9.5, -1, 0.75, 0.75, -3, 0.5, 3.25, -3.75, 0.5, 2.75, -1.5, 0.5, 9.5, -1.25, 0.5, 5.25, -3, 0.5, 5, -5.5, 0.5, 2.75, -9.5, 0.5, 9.5, 3, 0.5, 5.25, 3.25, 0.5, 3.25, 9.5, 0.5, 9.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(10, 3, 4), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 10), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 4), PackedInt32Array(6, 15, 9), PackedInt32Array(9, 15, 16), PackedInt32Array(13, 10, 14), PackedInt32Array(14, 10, 4), PackedInt32Array(18, 7, 8), PackedInt32Array(11, 12, 18), PackedInt32Array(19, 20, 8), PackedInt32Array(8, 20, 18), PackedInt32Array(18, 20, 11), PackedInt32Array(23, 22, 21), PackedInt32Array(24, 23, 0), PackedInt32Array(0, 23, 25), PackedInt32Array(25, 23, 21), PackedInt32Array(19, 23, 20), PackedInt32Array(20, 23, 24), PackedInt32Array(0, 1, 24), PackedInt32Array(21, 22, 26), PackedInt32Array(27, 9, 16), PackedInt32Array(27, 16, 26), PackedInt32Array(16, 28, 26), PackedInt32Array(26, 28, 21)]
+vertices = PackedVector3Array(-9.5, 0.5, 1.25, -5.75, 0.5, 1, -5.75, 0.5, -3.25, -4, 0.5, -3.5, -4, 0.5, -9.5, -9.5, 0.5, -9.5, -1.25, 0.5, 3, -1.25, 0.75, 1.5, -1.75, 0.5, 1.5, -3, 0.5, 3.25, 0, 0.5, -1.75, 0.25, 0.5, -9.5, -3.5, 0.5, -3.25, -3.75, 0.5, 2.75, -1.75, 0.5, -1.5, 1.5, 0.5, -1.5, 9.5, 0.5, -1.5, 9.5, 0.5, -9.5, 1.5, 0.75, -0.75, 1, 1, -0.75, 1.25, 1, 0.5, 2.75, 0.5, 3, 0, 1, 1, 9.5, 0.5, 2.75, -3, 0.5, 5, -5.5, 0.5, 2.75, -9.5, 0.5, 9.5, -1.5, 0.5, 9.5, -1.25, 0.5, 5.25, 3, 0.5, 5.25, 3.25, 0.5, 3.25, 9.5, 0.5, 9.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(12, 3, 10), PackedInt32Array(10, 3, 4), PackedInt32Array(10, 4, 11), PackedInt32Array(9, 13, 8), PackedInt32Array(8, 13, 14), PackedInt32Array(14, 13, 12), PackedInt32Array(10, 14, 12), PackedInt32Array(10, 11, 15), PackedInt32Array(15, 11, 16), PackedInt32Array(16, 11, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(7, 22, 6), PackedInt32Array(6, 22, 20), PackedInt32Array(6, 20, 21), PackedInt32Array(18, 15, 21), PackedInt32Array(21, 15, 23), PackedInt32Array(23, 15, 16), PackedInt32Array(9, 24, 13), PackedInt32Array(13, 24, 25), PackedInt32Array(25, 24, 0), PackedInt32Array(0, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(0, 1, 25), PackedInt32Array(24, 28, 27), PackedInt32Array(27, 28, 29), PackedInt32Array(30, 21, 23), PackedInt32Array(30, 23, 29), PackedInt32Array(23, 31, 29), PackedInt32Array(29, 31, 27)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra6dg"]
 
@@ -33,6 +33,8 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [node name="LevelTestEnemy" type="Node3D"]
 script = ExtResource("1_3s44k")
 level_name = "Enemy Test"
+enemy_limit = null
+is_spawners_active = null
 
 [node name="WorldEnvirement" type="Node" parent="."]
 
@@ -75,6 +77,6 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -4.60813, 0, -0.497047)
 script = ExtResource("5_8waba")
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("5_0cvkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.3, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
 enemy_scene = ExtResource("3_hbhw0")
 enemy_parent = NodePath("../../Entities/Enemies")
