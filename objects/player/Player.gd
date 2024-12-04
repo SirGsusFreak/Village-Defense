@@ -52,7 +52,7 @@ var on_ground: bool = false
 
 ## Called when the node is added to the scene
 func _ready() -> void:
-	weapon.reparent(hand_right, false)
+	weapon.reparent(hand_right, true)
 	health_current = max_health
 	hand_right.add_child(aim_line)
 
