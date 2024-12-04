@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bi3ywp3t7y4f"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_d5w2k"]
+[ext_resource type="Script" path="res://wall_damage.gd" id="1_6gd8j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eewg0"]
 
