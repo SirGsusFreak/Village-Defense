@@ -17,17 +17,12 @@ var camera_basis : Basis
 @export_category("Camera")
 @onready var camera: Camera3D = $FocusPoint/Camera3D
 
-var bullet  = load("res://scenes/Bullet.tscn")
-var instance
-
 ## Reference to the model node
 @export_category("Model")
 @onready var model := $Model
 @onready var hand_right := $Model/Skeleton3D/RightHand
 @onready var weapon := $Model/Weapon
 @onready var sword_animation = $Model/Weapon/Sword/AnimationPlayer
-@onready var rifle_anim = $Model/Weapon/Rifle/AnimationPlayer
-@onready var riffle_barrel = $Model/Weapon/Rifle/RayCast3D
 @onready var aim_cast := $Model/AimCast
 @onready var body := $Body
 
@@ -42,8 +37,8 @@ var aim_line: DrawLine3d = preload("res://addons/DrawLine3D.gd").new()
 @onready var hud := $Hud
 
 ## Weapon switching
-enum Weapons { Sword, Rifle }
-var current_weapon = Weapons.Rifle
+enum Weapons { Sword, Pistol }
+var current_weapon = Weapons.Sword
 
 var is_jumping: bool = false
 var on_ground: bool = false
@@ -51,7 +46,7 @@ var on_ground: bool = false
 
 ## Called when the node is added to the scene
 func _ready() -> void:
-	weapon.reparent(hand_right, true)
+	weapon.reparent(hand_right, false)
 	health_current = max_health
 	hand_right.add_child(aim_line)
 	
