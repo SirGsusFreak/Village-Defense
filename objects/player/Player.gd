@@ -31,10 +31,13 @@ var current_weapon = Weapons.Sword
 
 var is_jumping: bool = false
 
+@onready var health_bar = $SubViewport/HealthBar3D
+
 # Called when the node is added to the scene
 func _ready() -> void:
 	weapon.reparent(hand_right, false)
 	health_current = max_health
+	update_health_ui()
 
 # Called every physics frame
 func _physics_process(delta: float) -> void:
@@ -43,6 +46,9 @@ func _physics_process(delta: float) -> void:
 	handle_camera_rotation(delta)
 	update_player_rotation(direction)
 	update_mannequin_state(direction)
+
+
+
 
 # Get the movement input from the player
 func get_input_direction() -> Vector3:
@@ -65,6 +71,7 @@ func direction_relative_to_camera(direction: Vector3) -> Vector3:
 	var relative_direction = direction.x * camera_right + direction.z * camera_forward
 	relative_direction.y = 0  # Ignore vertical component to keep movement on XZ plane
 	return relative_direction.normalized()
+
 
 # Handle both horizontal and vertical movement (gravity, jumping, and movement)
 func update_movement(direction: Vector3, delta: float) -> void:
@@ -149,7 +156,29 @@ func update_mannequin_state(direction: Vector3) -> void:
 			model.transition_to(model.AnimationState.RUN)
 			model.set_is_moving(true)
 
+# Function to reduce health when taking damage
+func take_damage(amount: int) -> void:
+	var actual_damage = max(0, amount - defense)
+	health_current = clamp(health_current - actual_damage, 0, max_health)
+	update_health_ui()
+	if health_current <= 0:
+		die()
+	
+	
+		
+		
+# Handle player death
+func die() -> void:
+	print("Player has died")
+	global_transform.origin = Vector3.ZERO  # Reset position
+	health_current = max_health  # Reset health
+	update_health_ui()
 
+
+# Function to update the health UI
+func update_health_ui() -> void:
+	if health_bar:
+		health_bar.update_health_bar(health_current, max_health)
 #extends CharacterBody3D
 #
 #@export_category("Player Stats")
