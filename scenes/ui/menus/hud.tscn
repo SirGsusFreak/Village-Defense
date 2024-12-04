@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh3rgw3ymvdvy"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/hud.gd" id="1_kfajr"]
+[ext_resource type="FontFile" uid="uid://cus18svvcnps" path="res://hHachimaki.ttf" id="2_yio3c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nw6dt"]
+bg_color = Color(0.3, 0.7, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8oec"]
+font = ExtResource("2_yio3c")
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nuiiq"]
+font = ExtResource("2_yio3c")
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhrdj"]
+font = ExtResource("2_yio3c")
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_02bed"]
+font = ExtResource("2_yio3c")
+font_size = 100
+font_color = Color(0.870268, 0.0566727, 0.0328229, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(7.5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_855vd"]
+font = ExtResource("2_yio3c")
+font_size = 28
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kfajr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PlayerStats" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/PlayerStats"]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_nw6dt")
+value = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="MarginContainer/PlayerStats/HBoxContainer"]
+layout_mode = 2
+text = "Player
+"
+label_settings = SubResource("LabelSettings_s8oec")
+
+[node name="Xp" type="Label" parent="MarginContainer/PlayerStats/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "XP: 0"
+label_settings = SubResource("LabelSettings_nuiiq")
+text_overrun_behavior = 3
+
+[node name="TowerStats" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="TowerBar" type="ProgressBar" parent="MarginContainer/TowerStats"]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_nw6dt")
+value = 100.0
+fill_mode = 1
+
+[node name="TowerText" type="Label" parent="MarginContainer/TowerStats"]
+layout_mode = 2
+text = "Tower"
+label_settings = SubResource("LabelSettings_bhrdj")
+horizontal_alignment = 2
+
+[node name="GameOverBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.5
+offset_top = -50.5
+offset_right = 247.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="GameOverBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_02bed")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverXP" type="Label" parent="GameOverBox"]
+layout_mode = 2
+text = "Final EX: 0"
+label_settings = SubResource("LabelSettings_855vd")
+horizontal_alignment = 1
+vertical_alignment = 1

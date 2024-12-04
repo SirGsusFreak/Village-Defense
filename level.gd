@@ -1,8 +1,4 @@
-extends ProgressBar
-
-var parent 
-var max_value_amount
-var min_value_amount
+extends Level
 
 
 # Called when the node enters the scene tree for the first time.

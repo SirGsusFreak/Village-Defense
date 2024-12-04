@@ -3,8 +3,8 @@ extends CharacterBody3D
 
 @export_category("Player Stats")
 @export var max_health: int = 100
-@export var health_current: int
-@export var defense: int
+@export var health_current: int = 100
+@export var defense: int = 0
 @export var speed: float = 10.0
 @export var acceleration: float = 5.0
 @export var deacceleration: float = 8.0
@@ -12,14 +12,11 @@ extends CharacterBody3D
 #@export var input_motion
 @export var jump_velocity: float = 4.0
 #@export var local_dir = Vector3.ZERO
-@export var facing_angle: float = 0.0
 @export var camera_basis : Basis
 
 ## Camera node
 @export_category("Camera")
 @onready var camera: Camera3D = $FocusPoint/Camera3D
-@onready var camera_pivot := $FocusPoint  # Pivot point for camera rotation around the player
-@export var camera_rotate_speed: float = 2.0  # Speed of camera rotation
 
 ## Reference to the model node
 @export_category("Model")
@@ -38,6 +35,8 @@ var aim_line: DrawLine3d = preload("res://addons/DrawLine3D.gd").new()
 @export var target_point: Vector3
 @export var intersect_point: Vector3
 
+@onready var hud := $Hud
+
 ## Weapon switching
 enum Weapons { Sword, Pistol }
 var current_weapon = Weapons.Sword
@@ -52,19 +51,14 @@ func _ready() -> void:
 	health_current = max_health
 	hand_right.add_child(aim_line)
 
+
 ## Called every physics frame
 func _physics_process(delta: float) -> void:
 	var direction = get_input_direction().normalized()
 	update_movement(direction, delta)
-	#handle_camera_rotation(delta)
 	rotate_body_towards_cursor()
-	#handle_camera_rotation(delta)
-	
-	#drawLine()
+	update_hud()
 	aim_line.DrawLine(hand_right.global_position, mouse_point, Color(255,0,0))
-	
-	#update_player_rotation(direction)
-	#update_mannequin_state(direction)
 
 
 ## Get the movement input from the player
@@ -144,16 +138,6 @@ func handle_vertical_movement(delta: float) -> void:
 			model.set_jump_shot(true)
 
 
-### Update player rotation based on movement and aiming direction
-#func update_player_rotation(direction: Vector3) -> void:
-	#if Input.is_action_pressed("aim"):
-		#rotate_body_towards_cursor()
-	#else:
-		#if direction != Vector3.ZERO:
-			#var target_rotation_y = rad_to_deg(atan2(direction.x, direction.z))
-			#model.rotation_degrees.y = target_rotation_y
-
-
 ## Rotate the body to face the direction of the cursor
 func rotate_body_towards_cursor() -> void:
 	var mouse_position = get_viewport().get_mouse_position()
@@ -171,25 +155,10 @@ func rotate_body_towards_cursor() -> void:
 
 ## Update the animation movement vector based on local player movement
 func update_animation_movement(direction: Vector3) -> void:
-	## Transform global movement direction into local space
+	# Transform global movement direction into local space
 	var local_direction = global_transform.basis.inverse() * direction
-	## Update the animation with the local movement vector
+	# Update the animation with the local movement vector
 	model.update_movement_blend(Vector2(local_direction.x, local_direction.z))
-
-
-### Handle camera rotation based on Q and E input
-#func handle_camera_rotation(delta: float) -> void:
-	#if Input.is_action_pressed("camera_rotate_counterclockwise"):
-		#facing_angle = facing_angle + camera_rotate_speed * delta
-		#rotate_camera_around_player(camera_rotate_speed * delta)
-	#elif Input.is_action_pressed("camera_rotate_clockwise"):
-		#facing_angle = facing_angle - camera_rotate_speed * delta
-		#rotate_camera_around_player(-camera_rotate_speed * delta)
-
-
-### Rotate the camera pivot around the player
-#func rotate_camera_around_player(rotation_amount: float) -> void:
-	#camera_pivot.rotate_y(rotation_amount)
 
 ## Draws the aim line
 func drawLine() -> void:
@@ -205,3 +174,7 @@ func _on_take_damage(damage: int) -> void:
 	health_current = health_current - damage
 	if health_current <= 0:
 		Signalbus.emit_signal("player_death")
+		hud.update_health_bar(0)
+
+func update_hud():
+	hud.update_health_bar(health_current)

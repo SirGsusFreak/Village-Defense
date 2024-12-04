@@ -42,7 +42,7 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 0.5
-theme_override_constants/separation = 32
+theme_override_constants/separation = 0
 
 [node name="PauseLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

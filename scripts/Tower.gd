@@ -7,7 +7,7 @@ extends Node3D
 func _on_take_damage(amount: int):
 	health -= amount
 	print("Tower took damage! Remaining health: ", health)
-	
+	Signalbus.emit_signal("update_tower_health", health)
 	if health <= 0:
 		die()
 

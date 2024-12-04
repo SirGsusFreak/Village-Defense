@@ -15,13 +15,14 @@ var level: Level
 var level_path: String
 @export var game_active := false
 @export var game_paused := true
+var game_over := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signalbus.connect("exit_game", _exit_game)
 	Signalbus.connect("player_death", _on_player_death)
 	Signalbus.connect("tower_destroyed", _on_tower_destroyed)
-	Signalbus.connect("game_over", game_over)
+	Signalbus.connect("game_over", set_game_over)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +40,7 @@ func _on_dev_menu_start_game() -> void:
 	level = load(level_path).instantiate()
 	level_node.add_child(level)
 	dev_menu.hide()
+	game_over = false
 	play_game(true)
 
 
@@ -61,6 +63,7 @@ func _on_game_menu_quit_level() -> void:
 	dev_menu.hide()
 	game_menu.hide()
 	level_node.remove_child(level)
+	game_over = false
 
 
 func _exit_game() -> void:
@@ -68,11 +71,17 @@ func _exit_game() -> void:
 
 
 func play_game(activate: bool):
-	get_tree().paused = !activate
-	game_paused = !activate
+	if not game_over:
+		get_tree().paused = !activate
+		game_paused = !activate
+	else:
+		get_tree().paused = true
+		game_paused = true
 
 
 func toggle_pause() -> void:
+	if game_over:
+		return
 	if game_paused: 
 		game_menu.hide()
 		play_game(true)
@@ -83,13 +92,15 @@ func toggle_pause() -> void:
 
 func _on_player_death() -> void:
 	print("You have died!")
-	game_over()
+	Signalbus.emit_signal("game_over")
 
 
 func _on_tower_destroyed() -> void:
 	print("The tower was destroyed!")
-	game_over()
+	get_tree().paused = true
+	Signalbus.emit_signal("game_over")
 
 
-func game_over() -> void:
+func set_game_over() -> void:
+	game_over = true
 	print("-- Game Over! --")
