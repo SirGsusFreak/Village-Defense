@@ -11,6 +11,18 @@
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0770497, 0.00588322, 0.136377)
 script = ExtResource("1_52cos")
+max_health = null
+health_current = null
+defense = null
+speed = null
+acceleration = null
+deacceleration = null
+gravity = null
+jump_velocity = null
+camera_basis = null
+mouse_point = null
+target_point = null
+intersect_point = null
 
 [node name="Model" parent="." instance=ExtResource("2_j06in")]
 
@@ -28,8 +40,8 @@ target_position = Vector3(0, 0, 1000)
 collision_mask = 255
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8nkaj")
 
 [node name="FocusPoint" type="Node3D" parent="."]
