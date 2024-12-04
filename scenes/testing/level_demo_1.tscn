@@ -110,8 +110,6 @@ script = ExtResource("5_vae62")
 [node name="Spawner" parent="Spawners" instance=ExtResource("6_4tnij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -22)
 enemy_scene = ExtResource("7_1tsuo")
-spawn_interval = 7.0
-spawn_acceleration = 0.1
 enemy_parent = NodePath("../../Entities/Enemies")
 
 [node name="Spawner2" parent="Spawners" instance=ExtResource("6_4tnij")]
