@@ -5,7 +5,7 @@ extends Node3D
 @export var enemy_limit: int = 10
 @export var is_spawners_active: bool = true
 
-@onready var player: CharacterBody3D = $Entities/Player
+@onready var player: PlayerCharacter = $Entities/Player
 @onready var enemies_parent_node: Node = $Entities/Enemies
 @onready var spawners_parent_node: Node = $Spawners
 

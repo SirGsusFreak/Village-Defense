@@ -1,21 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnswfhobjk8by"]
 
-[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_x1ipb"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6l37"]
+[ext_resource type="Script" path="res://objects/enemies/walker.gd" id="1_fr5qy"]
+[ext_resource type="PackedScene" uid="uid://sj6vlqubbj2k" path="res://assets/models/monsters/walker_model.tscn" id="2_fnjbd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p7wpv"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_x1ipb")
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("model")]
+script = ExtResource("1_fr5qy")
+monster_type = "Walker"
+model = NodePath("WalkerModel")
+max_health = 10
+attack_power = 2
+defense = 1
+attack_cooldown = 3.0
+attack_time = 3.0
+experience = 5
 attack_range = 2.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_t6l37")
+[node name="WalkerModel" parent="." instance=ExtResource("2_fnjbd")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_p7wpv")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 1.0
+
+[node name="FloorCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)

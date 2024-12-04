@@ -51,7 +51,7 @@ transitions = ["Start", "rifle jump", SubResource("AnimationNodeStateMachineTran
 fadein_time = 0.05
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4fae6"]
-graph_offset = Vector2(-29.0254, -184.515)
+graph_offset = Vector2(0, 0)
 nodes/Anim_Move/node = SubResource("AnimationNodeBlendSpace2D_4lp88")
 nodes/Anim_Move/position = Vector2(128, -32)
 nodes/SM_Jump/node = SubResource("AnimationNodeStateMachine_ry6cn")
