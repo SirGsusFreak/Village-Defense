@@ -42,4 +42,5 @@ This project was built using **Godot Engine 4.x**. Key development highlights in
 - **3D assets** for visuals and animations.
 - Audio effects for an engaging game experience.
 
- 
+## Contributor
+  Malachi Wardrop, Zuberi Thompson, Luis Fabela, Rahul Biswas
