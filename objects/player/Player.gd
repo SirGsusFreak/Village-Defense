@@ -4,15 +4,14 @@ extends CharacterBody3D
 @export_category("Player Stats")
 @export var max_health: int = 100
 @export var health_current: int = 100
+@export var experience: int = 0
 @export var defense: int = 0
 @export var speed: float = 10.0
 @export var acceleration: float = 5.0
 @export var deacceleration: float = 8.0
 @export var gravity: float = -9.8
-#@export var input_motion
 @export var jump_velocity: float = 4.0
-#@export var local_dir = Vector3.ZERO
-@export var camera_basis : Basis
+var camera_basis : Basis
 
 ## Camera node
 @export_category("Camera")
@@ -55,6 +54,8 @@ func _ready() -> void:
 	weapon.reparent(hand_right, true)
 	health_current = max_health
 	hand_right.add_child(aim_line)
+	
+	Signalbus.connect("award_xp", add_xp)
 
 
 ## Called every physics frame
@@ -68,9 +69,12 @@ func _physics_process(delta: float) -> void:
 		if !rifle_anim.is_playing():
 			rifle_anim.play("Shoot")
 			instance = bullet.instantiate()
-			instance.position =riffle_barrel.global_position
-			instance.transform.basis = riffle_barrel.global_transform.basis
+			instance.position = riffle_barrel.global_position
+			# Calculate direction to mouse_point
+			var bullet_direction = (mouse_point - riffle_barrel.global_position).normalized()
+			instance.set("direction", bullet_direction)  # Pass direction to the bullet
 			get_parent().add_child(instance)
+
 
 
 ## Get the movement input from the player
@@ -188,5 +192,11 @@ func _on_take_damage(damage: int) -> void:
 		Signalbus.emit_signal("player_death")
 		hud.update_health_bar(0)
 
+
+func add_xp(xp: int):
+	experience = xp
+
+
 func update_hud():
 	hud.update_health_bar(health_current)
+	hud.update_xp(experience)

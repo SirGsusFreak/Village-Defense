@@ -6,6 +6,8 @@ const SPEED  = 100.0
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
 @export var damage: int = 3
+var direction = Vector3.ZERO  # Direction to move the bullet
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -13,7 +15,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += transform.basis * Vector3(0,0, -SPEED) * delta
+	if direction != Vector3.ZERO:
+		position += direction * SPEED * delta
+		look_at(position + direction)
+	
 	if ray.is_colliding():
 		var collider = ray.get_collider()
 		if collider and collider.has_method("take_damage"):

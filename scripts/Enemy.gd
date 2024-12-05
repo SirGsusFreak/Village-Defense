@@ -36,6 +36,7 @@ var tower: Tower = null  # Ensure both player and tower are null initially
 
 @onready var floorcast = $FloorCast
 
+
 func _ready():
 	# Initialize player and tower references after spawn
 	player = get_node_or_null(player_path)
@@ -125,6 +126,8 @@ func die():
 	
 	if player and player.has_method("add_experience"):
 		player.add_experience(experience)
+	
+	Signalbus.emit_signal("award_xp", experience)
 	
 	drop_loot()
 	queue_free()
