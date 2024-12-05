@@ -42,7 +42,9 @@ func _hide_menues():
 
 func _on_main_menu_to_dev() -> void:
 	_hide_menues()
-	dev_menu.show()
+	level_path = "res://scenes/testing/level_demo_1.tscn"
+	_on_dev_menu_start_game()
+	#dev_menu.show()
 
 
 func _on_dev_menu_start_game() -> void:
