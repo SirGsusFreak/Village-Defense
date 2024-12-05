@@ -7,20 +7,28 @@
 - Spawning enemies
 - Player
 
-## Installation
-Follow these steps to set up and run the game:
+## Compiling the Code
+Follow these steps to compile the project:
 
 1. Clone the repository:
     ```bash
     git clone https://github.com/SirGsusFreak/Village-Defense.git
     ```
-2. Open the project in the Godot Engine:
-    - Download and install [Godot Engine](https://godotengine.org/download).
-    - Launch Godot and click **Import Project**.
-    - Navigate to the folder containing the cloned repository and select the `project.godot` file.
+    Alternatively, download the repository as a ZIP file and extract it.
 
-3. Run the game:
-    - In the Godot editor, press the **Play** button (▶) to start the game.
+2. Open the project in the Godot Editor:
+   - Launch Godot Engine.
+   - Click on **Import Project**.
+   - Navigate to the folder containing the `project.godot` file and select it.
+
+3. Godot automatically compiles the project upon opening. There is no manual compilation required for GDScript or Godot projects.
+
+## Running the Game
+To run the game:
+
+**In the Godot Editor**:
+   - Click on the **Play** button (▶) in the top-right corner.
+   - The game will start in a new window.
 
 ## How to Play
 - Start the game
