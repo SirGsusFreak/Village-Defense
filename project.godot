@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 Toolkit="*res://addons/godottoolkit/toolkit.gd"
 Signalbus="*res://scripts/signalbus.gd"
 DrawLine3d="*res://addons/DrawLine3D.gd"
+MainMenu="*res://scenes/ui/main_menu.tscn"
 
 [display]
 
