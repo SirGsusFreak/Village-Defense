@@ -1,10 +1,11 @@
 # Village-Defense
-- A thrilling tower defense game where you must protect your village from waves of enemies. Built with the powerful **Godot Engine**.
+- A thrilling village defense game where you must protect your village tower from waves of enemies.Built with the **Godot Engine**.
 
 ## Features
 - Defend the tower in the village from waves of enemies with strategic placements of defenses.
-- weapons : rifle and sword
-- spawning enemies
+- Weapons : rifle and sword
+- Spawning enemies
+- Player
 
 ## Installation
 Follow these steps to set up and run the game:
@@ -23,8 +24,8 @@ Follow these steps to set up and run the game:
 
 ## How to Play
 - Start the game
-- control with W, S, A, D
-- right click on mouse to use weapon
+- Control with W, S, A, D
+- Right click on mouse to use weapon
 - Survive all enemy waves to protect your village and win the game.
 
 ## Development
