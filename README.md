@@ -26,7 +26,12 @@ Follow these steps to compile the project:
 ## Running the Game
 To run the game:
 
-**In the Godot Editor**:
+**Release Build:**
+   - Go to the Release Page
+   - Download the `Village Defense.exe`
+   - Run the game
+
+**Through Godot Editor**:
    - Click on the **Play** button (▶) in the top-right corner.
    - The game will start in a new window.
 
