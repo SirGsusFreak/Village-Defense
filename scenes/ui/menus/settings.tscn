@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkpkmdwkuaaaj"]
 
 [ext_resource type="Texture2D" uid="uid://cuk423jlajdrb" path="res://2111.w015.n001.624B.p15.624.jpg" id="1_aajdq"]
-[ext_resource type="Script" path="res://settings.gd" id="1_m2pv4"]
+[ext_resource type="Script" path="res://scenes/ui/menus/settings.gd" id="1_m2pv4"]
 [ext_resource type="FontFile" uid="uid://cus18svvcnps" path="res://hHachimaki.ttf" id="2_p5gur"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvbat"]
@@ -64,6 +64,7 @@ text = "Screen"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p5gur")
 theme_override_font_sizes/font_size = 50
-text = "Exit"
+text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button3" to="." method="_on_back_pressed"]

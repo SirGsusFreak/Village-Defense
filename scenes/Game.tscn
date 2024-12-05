@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbiggxu6b04j1"]
+[gd_scene load_steps=7 format=3 uid="uid://cbiggxu6b04j1"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_3r664"]
 [ext_resource type="PackedScene" uid="uid://vdrt2j1xpd82" path="res://scenes/ui/menus/main_menu.tscn" id="2_72mt2"]
 [ext_resource type="PackedScene" uid="uid://gojxdxg7huag" path="res://scenes/ui/menus/dev_menu.tscn" id="3_dcloy"]
 [ext_resource type="PackedScene" uid="uid://dhypvn7rk8qfk" path="res://scenes/ui/menus/game_menu.tscn" id="3_fhn6w"]
+[ext_resource type="PackedScene" uid="uid://bkpkmdwkuaaaj" path="res://scenes/ui/menus/settings.tscn" id="4_qc3oa"]
+[ext_resource type="PackedScene" uid="uid://cpj2xqncv8gwl" path="res://scenes/ui/menus/sound_menu.tscn" id="6_nrjhh"]
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -14,11 +16,21 @@ metadata/_edit_horizontal_guides_ = [648.0, 324.0]
 [node name="UI" type="Node" parent="."]
 
 [node name="MainMenu" parent="UI" instance=ExtResource("2_72mt2")]
+z_index = 1
 
 [node name="DevMenu" parent="UI" instance=ExtResource("3_dcloy")]
 visible = false
+z_index = 1
+
+[node name="Settings" parent="UI" instance=ExtResource("4_qc3oa")]
+visible = false
 
 [node name="GameMenu" parent="UI" instance=ExtResource("3_fhn6w")]
+visible = false
+z_index = 1
+y_sort_enabled = true
+
+[node name="SoundMenu" parent="UI" instance=ExtResource("6_nrjhh")]
 visible = false
 
 [node name="Level" type="Node" parent="."]

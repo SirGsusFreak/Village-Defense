@@ -7,11 +7,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	pass
+	
+
+func _on_save_pressed() -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db($AudioOption/VBoxContainer/MasterSlider.value))
 
 
-
-
-func _on_sound_pressed() -> void:
-	get_tree().change_scene_to_file("res://sound_menu.tscn")
+func _on_back_pressed() -> void:
+	self.hide()

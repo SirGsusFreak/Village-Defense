@@ -56,6 +56,7 @@ func _ready() -> void:
 	hand_right.add_child(aim_line)
 	
 	Signalbus.connect("award_xp", add_xp)
+	Signalbus.connect("show_hud", show_hud)
 
 
 ## Called every physics frame
@@ -195,6 +196,10 @@ func _on_take_damage(damage: int) -> void:
 
 func add_xp(xp: int):
 	experience = xp
+
+
+func show_hud(show: bool):
+	hud.visible = show
 
 
 func update_hud():
