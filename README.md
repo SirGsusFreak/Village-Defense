@@ -27,9 +27,9 @@ Follow these steps to compile the project:
 To run the game:
 
 **Release Build:**
-   - Go to the Release Page
-   - Download the `Village Defense.exe`
-   - Run the game
+   - Go to the [Release Page](https://github.com/SirGsusFreak/Village-Defense/releases/tag/alpha)
+   - Download the `Village Defense.exe` and `Village Defense.pck`
+   - Run the `Village Defense.exe`
 
 **Through Godot Editor**:
    - Click on the **Play** button (▶) in the top-right corner.
@@ -38,8 +38,8 @@ To run the game:
 ## How to Play
 - Start the game
 - Control with W, S, A, D
-- Right click on mouse to use weapon
-- Survive all enemy waves to protect your village and win the game.
+- Left click on mouse to use weapon
+- Shoot the zombies and keep them from killing you or destroying the center tower
 
 ## Development
 This project was built using **Godot Engine 4.x**. Key development highlights include:
